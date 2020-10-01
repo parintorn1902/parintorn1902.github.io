@@ -1,1 +1,0 @@
-# parintorn1902.github.io
