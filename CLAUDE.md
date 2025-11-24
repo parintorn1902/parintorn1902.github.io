@@ -4,7 +4,7 @@
 > **Type:** React TypeScript Source Code with GitHub Actions Deployment
 > **Owner:** Parintorn Sanguanpong
 > **Domain:** https://parintorn.com
-> **Documentation Version:** 2.1
+> **Documentation Version:** 2.2
 > **Last Updated:** November 24, 2025
 
 ---
@@ -35,7 +35,7 @@ This repository contains the **source code** of a personal portfolio website. It
 - **Type:** Single Page Application (SPA)
 - **Framework:** React 19 with TypeScript
 - **Build Tool:** Vite 7
-- **Styling:** Tailwind CSS 3 + Custom CSS
+- **Styling:** Tailwind CSS 4 + Custom CSS
 - **Animations:** Framer Motion
 - **Deployment:** GitHub Pages via GitHub Actions
 - **Navigation:** Smooth scroll (no URL routing)
@@ -74,7 +74,7 @@ parintorn1902.github.io/
 │   ├── hooks/
 │   │   └── useMousePosition.ts       # Mouse position tracking hook
 │   ├── App.tsx                       # Main application component
-│   ├── index.css                     # Global styles, Tailwind imports
+│   ├── index.css                     # Global styles, Tailwind v4 config (@theme)
 │   ├── main.tsx                      # Application entry point
 │   └── vite-env.d.ts                 # Vite type definitions
 ├── index.html                         # HTML entry point
@@ -83,9 +83,7 @@ parintorn1902.github.io/
 ├── tsconfig.json                      # TypeScript configuration
 ├── tsconfig.app.json                  # TypeScript app configuration
 ├── tsconfig.node.json                 # TypeScript node configuration
-├── vite.config.ts                     # Vite build configuration
-├── tailwind.config.js                 # Tailwind CSS configuration
-├── postcss.config.js                  # PostCSS configuration
+├── vite.config.ts                     # Vite build configuration (includes Tailwind v4)
 ├── eslint.config.js                   # ESLint flat config
 ├── .gitignore                         # Git ignore rules
 ├── CLAUDE.md                          # This documentation
@@ -105,9 +103,8 @@ parintorn1902.github.io/
 
 ### Styling
 
-- **Tailwind CSS 3** - Utility-first CSS framework (v3.4.18)
-- **PostCSS** - CSS transformation (v8.5.6)
-- **Autoprefixer** - Automatic vendor prefixes (v10.4.22)
+- **Tailwind CSS 4.1.17** - Utility-first CSS framework with CSS-based configuration
+- **@tailwindcss/vite 4.1.17** - Official Vite plugin for Tailwind v4 (replaces PostCSS)
 - **Custom CSS** - Matrix rain animations and effects
 
 ### Icons & UI
@@ -646,15 +643,15 @@ export const technologies = {
 
 ### Color Palette (Cyberpunk Theme)
 
-**Custom Tailwind Colors (defined in `tailwind.config.js`):**
-```javascript
-cyber: {
-  primary: '#00ff41',      // Matrix green - primary accent
-  secondary: '#00d9ff',    // Cyan blue - secondary accent
-  accent: '#ff2a6d',       // Hot pink - tertiary accent
-  dark: '#0a0e27',         // Dark blue background
-  darker: '#05070f',       // Darkest background
-  card: '#0f1629',         // Card background
+**Custom Tailwind Colors (defined in `src/index.css` using `@theme`):**
+```css
+@theme {
+  --color-cyber-primary: #00ff41;      /* Matrix green - primary accent */
+  --color-cyber-secondary: #00d9ff;    /* Cyan blue - secondary accent */
+  --color-cyber-accent: #ff2a6d;       /* Hot pink - tertiary accent */
+  --color-cyber-dark: #0a0e27;         /* Dark blue background */
+  --color-cyber-darker: #05070f;       /* Darkest background */
+  --color-cyber-card: #0f1629;         /* Card background */
 }
 ```
 
@@ -680,11 +677,11 @@ cyber: {
 
 ### Typography
 
-**Font Families (defined in `tailwind.config.js` and imported in `index.css`):**
-```javascript
-fontFamily: {
-  mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
-  sans: ['Inter', 'system-ui', 'sans-serif'],
+**Font Families (defined in `src/index.css` using `@theme`):**
+```css
+@theme {
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-family-sans: 'Inter', system-ui, sans-serif;
 }
 ```
 
@@ -754,16 +751,16 @@ whileTap={{ scale: 0.95 }}
 
 #### Tailwind Custom Animations
 
-**Custom Animations (defined in `tailwind.config.js`):**
-```javascript
-animation: {
-  'glow': 'glow 2s ease-in-out infinite alternate',
-  'float': 'float 3s ease-in-out infinite',
-  'scan': 'scan 8s linear infinite',
-  'glitch': 'glitch 1s linear infinite',
-  'typing': 'typing 3.5s steps(40, end)',
-  'blink': 'blink 0.7s infinite',
-  'spin-slow': 'spin 5s linear infinite',
+**Custom Animations (defined in `src/index.css` using `@theme`):**
+```css
+@theme {
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-scan: scan 8s linear infinite;
+  --animate-glitch: glitch 1s linear infinite;
+  --animate-typing: typing 3.5s steps(40, end);
+  --animate-blink: blink 0.7s infinite;
+  --animate-spin-slow: spin 5s linear infinite;
 }
 ```
 
@@ -1371,71 +1368,89 @@ export const technologies = {
 
 ### Customizing Styles
 
-#### Tailwind Configuration (`tailwind.config.js`)
+#### Tailwind v4 CSS-Based Configuration
 
-**Current Configuration:**
-```javascript
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        cyber: {
-          primary: '#00ff41',
-          secondary: '#00d9ff',
-          accent: '#ff2a6d',
-          dark: '#0a0e27',
-          darker: '#05070f',
-          card: '#0f1629',
-        },
-      },
-      fontFamily: {
-        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
-      animation: {
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'float': 'float 3s ease-in-out infinite',
-        'scan': 'scan 8s linear infinite',
-        'glitch': 'glitch 1s linear infinite',
-        'typing': 'typing 3.5s steps(40, end)',
-        'blink': 'blink 0.7s infinite',
-        'spin-slow': 'spin 5s linear infinite',
-      },
-      backdropBlur: {
-        xs: '2px',  // Extra small blur for subtle effects
-      },
-    },
-  },
-  plugins: [],
-}
+**Note:** Tailwind CSS v4 uses CSS-based configuration via the `@theme` directive instead of `tailwind.config.js`. All theme customizations are defined in `src/index.css`.
+
+#### Vite Configuration (`vite.config.ts`)
+
+**Tailwind v4 Plugin:**
+```typescript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [tailwindcss(), react()],
+  // ... other config
+})
 ```
 
-**Extended Features:**
-- **Colors**: Complete `cyber` palette with 6 shades
-- **Fonts**: JetBrains Mono (mono) and Inter (sans) families
-- **Animations**: 7 custom animations (glow, float, scan, glitch, typing, blink, spin-slow)
-- **Backdrop Blur**: Extra small blur (`xs: 2px`) for glassmorphism effects
+**Key Features:**
+- First-party Vite plugin for optimal performance
+- Replaces PostCSS plugin (no longer needed)
+- Automatic content detection (no manual configuration required)
+- Works seamlessly with Vite 7
 
-**Customization Tips:**
-- Add custom colors to the `cyber` palette
-- Extend font families for different aesthetics
-- Create custom animations and keyframes
-- Adjust breakpoints, spacing, and other theme values
+#### Global Styles & Theme Configuration (`src/index.css`)
 
-#### Global Styles (`src/index.css`)
-
-**Current Global Styles:**
+**Current Configuration:**
 ```css
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+@theme {
+  /* Custom Colors */
+  --color-cyber-primary: #00ff41;
+  --color-cyber-secondary: #00d9ff;
+  --color-cyber-accent: #ff2a6d;
+  --color-cyber-dark: #0a0e27;
+  --color-cyber-darker: #05070f;
+  --color-cyber-card: #0f1629;
+
+  /* Custom Font Families */
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+
+  /* Custom Animations */
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-scan: scan 8s linear infinite;
+  --animate-glitch: glitch 1s linear infinite;
+  --animate-typing: typing 3.5s steps(40, end);
+  --animate-blink: blink 0.7s infinite;
+  --animate-spin-slow: spin 5s linear infinite;
+
+  /* Custom Backdrop Blur */
+  --backdrop-blur-xs: 2px;
+}
+
+/* Keyframes for custom animations */
+@keyframes glow { /* ... */ }
+@keyframes float { /* ... */ }
+@keyframes scan { /* ... */ }
+@keyframes glitch { /* ... */ }
+@keyframes typing { /* ... */ }
+@keyframes blink { /* ... */ }
+```
+
+**Extended Features:**
+- **Colors**: Complete `cyber` palette with 6 shades using CSS custom properties
+- **Fonts**: JetBrains Mono (mono) and Inter (sans) families
+- **Animations**: 7 custom animations (glow, float, scan, glitch, typing, blink, spin-slow)
+- **Backdrop Blur**: Extra small blur (`xs: 2px`) for glassmorphism effects
+- **Automatic Content Detection**: No need to configure file paths, Tailwind v4 detects templates automatically
+
+**Customization Tips:**
+- Add custom colors using `--color-<name>: <value>` in `@theme` block
+- Extend font families using `--font-family-<name>: <fonts>`
+- Create custom animations using `--animate-<name>: <animation>`
+- Define keyframes outside the `@theme` block using standard `@keyframes`
+- Use `@layer base/components/utilities` for custom CSS classes
+
+**Component Styles:**
+```css
 @layer base {
   body {
     @apply bg-cyber-darker text-cyber-primary font-mono;
@@ -1632,20 +1647,20 @@ git push origin master
 **Symptom:** Tailwind classes not working
 
 **Solution:**
-1. Check `tailwind.config.js` content paths:
-   ```javascript
-   content: [
-     "./index.html",
-     "./src/**/*.{js,ts,jsx,tsx}",
-   ],
-   ```
-2. Ensure `src/index.css` imports Tailwind:
+1. **Tailwind v4** uses automatic content detection - no manual configuration needed
+2. Ensure `src/index.css` imports Tailwind v4:
    ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
+   @import "tailwindcss";
    ```
-3. Clear build cache:
+3. Verify `vite.config.ts` includes the Tailwind plugin:
+   ```typescript
+   import tailwindcss from '@tailwindcss/vite'
+
+   export default defineConfig({
+     plugins: [tailwindcss(), react()],
+   })
+   ```
+4. Clear build cache:
    ```bash
    rm -rf dist node_modules/.vite
    npm run build
@@ -1810,9 +1825,7 @@ git push origin master
 ### Key Files
 
 **Configuration:**
-- `vite.config.ts` - Vite build configuration
-- `tailwind.config.js` - Tailwind CSS custom theme and animations
-- `postcss.config.js` - PostCSS plugins configuration
+- `vite.config.ts` - Vite build configuration with Tailwind v4 plugin
 - `eslint.config.js` - ESLint flat config (ES9 format)
 - `tsconfig.json` - TypeScript root configuration (references)
 - `tsconfig.app.json` - TypeScript app configuration (src/)
@@ -1824,7 +1837,7 @@ git push origin master
 - `src/App.tsx` - Main application component
 - `src/main.tsx` - Application entry point
 - `src/data/portfolio.ts` - Centralized content data
-- `src/index.css` - Global styles, custom CSS classes, font imports
+- `src/index.css` - Tailwind v4 config (@theme), global styles, custom CSS classes
 - `src/components/*.tsx` - All React components
 - `src/hooks/useMousePosition.ts` - Custom mouse tracking hook
 
@@ -1876,13 +1889,12 @@ git push origin master  # Push to GitHub → triggers auto-deployment
 **Frontend:**
 - React 19.2.0 + TypeScript 5.9.3
 - Vite 7.2.4
-- Tailwind CSS 3.4.18
+- Tailwind CSS 4.1.17 + @tailwindcss/vite 4.1.17
 - Framer Motion 12.23.24
 - React Icons 5.5.0
 
 **Development:**
 - ESLint 9.39.1 + TypeScript ESLint 8.46.4
-- PostCSS 8.5.6 + Autoprefixer 10.4.22
 - Vite Plugin React 5.1.1
 
 **Deployment:**
@@ -1893,7 +1905,7 @@ git push origin master  # Push to GitHub → triggers auto-deployment
 **Theme:**
 - Cyberpunk/Hacker aesthetic
 - Matrix rain effect with Canvas API
-- Dark mode with custom cyber color palette
+- Dark mode with custom cyber color palette (CSS-based @theme)
 - JetBrains Mono + Inter fonts
 - Custom animations and glassmorphism effects
 
@@ -1939,11 +1951,21 @@ This portfolio website showcases modern web development practices using React 19
 
 ---
 
-**Documentation Version:** 2.1 (Updated Source Code Edition)
-**Last Updated:** November 24, 2025 (Revised)
+**Documentation Version:** 2.2 (Tailwind v4 Upgrade Edition)
+**Last Updated:** November 24, 2025
 **Purpose:** Comprehensive technical documentation for portfolio website source code
 
-**Recent Updates:**
+**Recent Updates (v2.2):**
+- **Upgraded to Tailwind CSS v4.1.17** - Major version upgrade from v3.4.18
+- Added **@tailwindcss/vite 4.1.17** plugin for optimal Vite 7 integration
+- Migrated from JavaScript config to **CSS-based @theme configuration**
+- Removed PostCSS and Autoprefixer dependencies (no longer needed)
+- Updated all documentation to reflect Tailwind v4 architecture
+- Removed `tailwind.config.js` and `postcss.config.js` files
+- Updated styling documentation with CSS custom properties syntax
+- Added troubleshooting for Tailwind v4 configuration
+
+**Previous Updates (v2.1):**
 - Updated all version numbers to match package.json (React 19.2.0, Vite 7.2.4, TypeScript 5.9.3)
 - Added complete Tailwind custom color palette (cyber theme)
 - Documented all custom animations and keyframes
