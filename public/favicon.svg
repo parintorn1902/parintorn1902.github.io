@@ -1,0 +1,47 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#05070f"/>
+
+  <!-- Terminal Window Frame -->
+  <rect x="64" y="96" width="384" height="320" rx="8" fill="#0f1629" stroke="#00ff41" stroke-width="3"/>
+
+  <!-- Terminal Dots -->
+  <circle cx="96" cy="128" r="8" fill="#ff2a6d"/>
+  <circle cx="128" cy="128" r="8" fill="#00d9ff"/>
+  <circle cx="160" cy="128" r="8" fill="#00ff41"/>
+
+  <!-- Terminal Text Line -->
+  <rect x="96" y="160" width="320" height="4" rx="2" fill="#00ff41" opacity="0.5"/>
+
+  <!-- P Letter (Stylized) -->
+  <path d="M 160 200 L 160 340 M 160 200 L 220 200 Q 250 200 250 235 Q 250 270 220 270 L 160 270"
+        stroke="#00ff41" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- S Letter (Stylized) -->
+  <path d="M 350 200 Q 290 200 290 230 Q 290 250 320 250 Q 350 250 350 270 Q 350 300 290 300 Q 260 300 260 320"
+        stroke="#00ff41" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Cursor Blink -->
+  <rect x="370" y="305" width="12" height="24" fill="#00ff41">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Glow Effect -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <!-- Repeating the letters with glow -->
+    <path d="M 160 200 L 160 340 M 160 200 L 220 200 Q 250 200 250 235 Q 250 270 220 270 L 160 270"
+          stroke="#00ff41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/>
+    <path d="M 350 200 Q 290 200 290 230 Q 290 250 320 250 Q 350 250 350 270 Q 350 300 290 300 Q 260 300 260 320"
+          stroke="#00ff41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/>
+  </g>
+</svg>
