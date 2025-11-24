@@ -13,7 +13,7 @@ const MatrixRain = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const chars = '01';
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const fontSize = 14;
     const columns = canvas.width / fontSize;
     const drops: number[] = [];
@@ -58,7 +58,6 @@ const MatrixRain = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="matrix-rain"
       style={{
         position: 'fixed',
         top: 0,
