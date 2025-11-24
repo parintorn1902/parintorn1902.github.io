@@ -85,7 +85,6 @@ This site is automatically deployed to GitHub Pages via GitHub Actions on every 
 
 ## 📫 Get in Touch
 
-- **Email**: [parintorn1902@gmail.com](mailto:parintorn1902@gmail.com)
 - **Website**: [parintorn.com](https://parintorn.com)
 - **GitHub**: [@parintorn1902](https://github.com/parintorn1902)
 - **LinkedIn**: [Parintorn S](https://www.linkedin.com/in/parintorn-s-24579a179/)
