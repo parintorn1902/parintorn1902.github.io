@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# Parintorn Sanguanpong
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Senior Software Engineer | Full-Stack Developer | TypeScript & Golang Enthusiast
 
-Currently, two official plugins are available:
+[![Portfolio](https://img.shields.io/badge/Portfolio-parintorn.com-blue?style=flat-square)](https://parintorn.com)
+[![GitHub](https://img.shields.io/badge/GitHub-parintorn1902-black?style=flat-square&logo=github)](https://github.com/parintorn1902)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Parintorn%20S-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/parintorn-s-24579a179/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👋 About Me
 
-## React Compiler
+Hello! I'm a Senior Software Engineer specializing in full-stack development with **TypeScript** as my core language. I work extensively with **Node.js**, **React.js**, **React Native**, and **Golang**. I'm passionate about coding, exploring new technologies, and collaborating with others to build modern web and mobile experiences.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Currently working at **TechBerry Company Limited** since 2018, where I design and develop products, lead technical implementations, and mentor junior developers.
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend
+- **React.js** - Next.js, Vite, Tailwind CSS, Shadcn-ui, Mantine UI, Chakra-UI, Material-UI
+- **React Native** - Expo, React Native CLI, Nativewind, Reanimated, Native Modules
+- **Mobile Publishing** - Play Store & App Store deployment
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Backend
+- **Node.js** - Express, TypeORM, MongoDB, PostgreSQL, JWT, PM2
+- **Golang** - Gin, GORM, PostgreSQL, MongoDB, REST API
+- **Java** - Spring Boot, Spring MVC, Spring Data JPA, Spring Security
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Tools & Cloud
+- **Development** - Cursor, VS Code, Android Studio, Docker, Postman
+- **AI Tools** - Cursor AI, Claude Code, ChatGPT (Agent & Thinking Partner)
+- **Cloud** - AWS Lightsail, Digital Ocean, Firebase, Google Maps Platform
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 💼 Experience
+
+**Senior Software Engineer** @ TechBerry Company Limited (2018 - Present)
+- Design & develop products using modern technologies
+- Lead technical implementations and mentor junior developers
+- Research new technologies and solutions to improve products
+- Tech: React.js, React Native, Node.js, Golang, MongoDB, PostgreSQL, Docker
+
+**Freelancer** (2015 - 2017)
+- Outsourcing projects from partners
+- Tech: PHP, HTML, CSS, JavaScript, Ajax, MySQL
+
+## 🎯 Featured Projects
+
+### [Netflix Clone](https://parintorn.com/netflix)
+Next.js and Tailwind CSS making the ultimate Netflix clone website
+- **Tech**: Next.js, Tailwind CSS, React
+- [View Source](https://github.com/parintorn1902/my-netflix)
+
+### [Basic CRUD & JWT](https://github.com/parintorn1902/basic-react-node-crud)
+Next.js with Chakra-UI and RESTful Node.js service with authentication
+- **Tech**: Next.js, Chakra-UI, Node.js, JWT
+
+## 🌐 This Portfolio
+
+This portfolio website is built with modern web technologies:
+
+- **Framework**: React 19 + TypeScript
+- **Build Tool**: Vite 7
+- **Styling**: Tailwind CSS 3
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Deployment**: GitHub Pages with GitHub Actions
+
+### Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This site is automatically deployed to GitHub Pages via GitHub Actions on every push to the `master` branch.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📫 Get in Touch
+
+- **Email**: [parintorn1902@gmail.com](mailto:parintorn1902@gmail.com)
+- **Website**: [parintorn.com](https://parintorn.com)
+- **GitHub**: [@parintorn1902](https://github.com/parintorn1902)
+- **LinkedIn**: [Parintorn S](https://www.linkedin.com/in/parintorn-s-24579a179/)
+
+---
+
+**Building modern web experiences with code** 🚀

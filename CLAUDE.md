@@ -1,10 +1,10 @@
 # Portfolio Website - Technical Documentation
 
 > **Repository:** parintorn1902.github.io
-> **Type:** GitHub Pages Deployment Repository
+> **Type:** React TypeScript Source Code with GitHub Actions Deployment
 > **Owner:** Parintorn Sanguanpong
 > **Domain:** https://parintorn.com
-> **Last Updated:** October 8, 2022
+> **Last Updated:** November 24, 2025
 
 ---
 
@@ -19,25 +19,27 @@
 7. [Styling & Design](#styling--design)
 8. [Features](#features)
 9. [Build & Deployment](#build--deployment)
-10. [Development Notes](#development-notes)
+10. [Development Guide](#development-guide)
 
 ---
 
 ## Overview
 
-This repository contains the **production build** of a personal portfolio website. It is a **single-page application (SPA)** built with React, Vite, and Tailwind CSS, deployed on GitHub Pages.
+This repository contains the **source code** of a personal portfolio website. It is a **single-page application (SPA)** built with React 19, TypeScript, Vite, and Tailwind CSS, featuring a cyberpunk/hacker aesthetic with matrix rain animations.
 
-**Important:** This repository contains **only the compiled build output**. The source code (React components, configuration files, etc.) is not included in this repository. All files are minified and bundled for production deployment.
+**Repository Type:** Source code repository with automatic GitHub Actions deployment to GitHub Pages.
 
 ### Key Characteristics
 
-- **Type:** Static website (HTML, CSS, JS)
-- **Framework:** React 18 (compiled)
-- **Build Tool:** Vite
+- **Type:** Single Page Application (SPA)
+- **Framework:** React 19 with TypeScript
+- **Build Tool:** Vite 7
 - **Styling:** Tailwind CSS 3 + Custom CSS
-- **Deployment:** GitHub Pages
+- **Animations:** Framer Motion
+- **Deployment:** GitHub Pages via GitHub Actions
 - **Navigation:** Smooth scroll (no URL routing)
 - **Responsive:** Mobile-first design
+- **Theme:** Cyberpunk/Hacker aesthetic with Matrix rain effect
 
 ---
 
@@ -45,28 +47,42 @@ This repository contains the **production build** of a personal portfolio websit
 
 ```
 /home/user/parintorn1902.github.io/
-├── index.html                      # Entry point
-├── README.md                       # Minimal readme
-├── CLAUDE.md                       # This documentation
-├── assets/                         # Compiled JavaScript and CSS
-│   ├── index.1351db88.js          # Main application bundle (~46KB)
-│   ├── vendor.c4c1e6a5.js         # React & vendor libraries (~143KB)
-│   └── index.540fbe58.css         # Compiled Tailwind CSS (~19KB)
-└── images/                        # Static image assets
-    ├── favicon.png                # Site icon (9.8KB)
-    ├── netflix-preview.png        # Project preview (744KB)
-    └── student-management-preview.png  # Project preview (12KB)
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                 # GitHub Actions deployment workflow
+├── public/
+│   ├── images/                        # Static images (project previews, etc.)
+│   ├── favicon.svg                    # Site favicon (SVG)
+│   └── vite.svg                       # Vite logo
+├── src/
+│   ├── components/                    # React components
+│   │   ├── Contact.tsx               # Contact section component
+│   │   ├── Experience.tsx            # Experience/timeline component
+│   │   ├── Hero.tsx                  # Hero/landing section
+│   │   ├── MatrixRain.tsx            # Matrix rain background effect
+│   │   ├── Navigation.tsx            # Header navigation
+│   │   ├── Projects.tsx              # Projects showcase
+│   │   └── Technologies.tsx          # Tech stack display
+│   ├── data/
+│   │   └── portfolio.ts              # Portfolio data (projects, experience, etc.)
+│   ├── hooks/
+│   │   └── useMousePosition.ts       # Mouse position tracking hook
+│   ├── App.tsx                       # Main application component
+│   ├── index.css                     # Global styles, Tailwind imports
+│   ├── main.tsx                      # Application entry point
+│   └── vite-env.d.ts                 # Vite type definitions
+├── index.html                         # HTML entry point
+├── package.json                       # Dependencies and scripts
+├── tsconfig.json                      # TypeScript configuration
+├── tsconfig.app.json                  # TypeScript app configuration
+├── tsconfig.node.json                 # TypeScript node configuration
+├── vite.config.ts                     # Vite build configuration
+├── tailwind.config.js                 # Tailwind CSS configuration
+├── postcss.config.js                  # PostCSS configuration
+├── .gitignore                         # Git ignore rules
+├── CLAUDE.md                          # This documentation
+└── README.md                          # Project introduction
 ```
-
-### File Details
-
-| File | Size | Purpose |
-|------|------|---------|
-| `index.html` | 668 bytes | Main HTML file with React root mount point |
-| `index.1351db88.js` | 46KB | Application code (compiled React components) |
-| `vendor.c4c1e6a5.js` | 143KB | React, ReactDOM, and dependencies |
-| `index.540fbe58.css` | 19KB | Tailwind CSS + custom styles |
-| **Total bundle** | **~208KB** | Uncompressed total |
 
 ---
 
@@ -74,31 +90,31 @@ This repository contains the **production build** of a personal portfolio websit
 
 ### Frontend Framework
 
-- **React 18** - UI library
-- **React Hooks** - State management (useState, useRef, useEffect)
-- **JSX** - Component templating
-
-### Build Tools
-
-- **Vite** - Fast build tool and dev server
-- **ES Modules** - Modern JavaScript module system
-- **Content Hashing** - Cache busting for assets
+- **React 19** - Latest React with improved concurrent features
+- **TypeScript** - Type-safe JavaScript
+- **Vite 7** - Fast build tool and dev server
+- **Framer Motion** - Animation library (v12.23.24)
 
 ### Styling
 
-- **Tailwind CSS 3** - Utility-first CSS framework
-- **Custom CSS** - Animations and special effects
-- **Google Fonts** - Inter font family (400, 700, 800 weights)
+- **Tailwind CSS 3** - Utility-first CSS framework (v3.4.18)
+- **PostCSS** - CSS transformation (v8.5.6)
+- **Autoprefixer** - Automatic vendor prefixes (v10.4.22)
+- **Custom CSS** - Matrix rain animations and effects
 
-### Icons
+### Icons & UI
 
-- **react-icons** - Icon library
-  - `react-icons/ai` - GitHub icon
-  - `react-icons/fa` - General icons
-  - `react-icons/md` - Material Design icons
+- **react-icons** - Comprehensive icon library (v5.5.0)
+
+### Development Tools
+
+- **TypeScript ESLint** - Code linting (v8.46.4)
+- **Vite Plugin React** - Fast Refresh support (v5.1.1)
+- **ESLint** - JavaScript linter (v9.39.1)
 
 ### Deployment
 
+- **GitHub Actions** - CI/CD pipeline
 - **GitHub Pages** - Static site hosting
 - **Custom Domain** - parintorn.com (via DNS CNAME)
 
@@ -110,1116 +126,899 @@ This repository contains the **production build** of a personal portfolio websit
 
 This is a **single-page application** without traditional routing. The page consists of multiple sections that are accessed via smooth scrolling.
 
-#### Page Sections (Anchor IDs)
+#### Component Hierarchy
 
-1. **Hero/Home** - Landing section (no ID)
+```
+App
+├── MatrixRain (Background)
+├── Navigation (Fixed header)
+└── main (Content)
+    ├── Hero
+    ├── Projects
+    ├── Technologies
+    ├── Experience
+    └── Contact
+```
+
+#### Page Sections
+
+1. **Hero** - Landing section with introduction
 2. **#projects** - Project showcase
 3. **#technologies** - Tech stack display
-4. **#about** - Work experience and skills
+4. **#experience** - Work experience timeline
+5. **#contact** - Contact information and links
 
 ### Navigation System
 
-**Type:** Anchor-based smooth scroll (no React Router)
+**Type:** Anchor-based smooth scroll
 
-**Mechanism:**
-```javascript
-// Pseudo-code from compiled bundle
-const scrollToSection = (sectionId) => {
-  const element = document.getElementById(sectionId);
-  const offset = element.getBoundingClientRect().top + window.scrollY;
-  window.scroll({
-    top: offset - 50,  // 50px offset for fixed header
-    behavior: "smooth"
-  });
-};
+**Implementation:**
+```typescript
+// Smooth scrolling enabled globally in App.tsx
+document.documentElement.style.scrollBehavior = 'smooth';
 ```
 
 **Features:**
-- Fixed header compensation (50px offset)
-- Smooth scroll behavior
-- Works on both desktop and mobile menus
+- Fixed header navigation
+- Smooth scroll to sections
+- Mobile-responsive menu
+- Active section highlighting (optional)
 
 ---
 
 ## Components
 
-### Overview
+### 1. **App Component** (`src/App.tsx`)
 
-All components are compiled into `/assets/index.1351db88.js`. Component names below are inferred from the minified code.
-
-### Component Hierarchy
-
-```
-App (J)
-├── MobileMenu (O)
-│   └── Hamburger Toggle
-├── SnowflakeAnimation (T)
-├── Header/Navbar (E)
-│   ├── Logo with Profile Image
-│   ├── Navigation Links (desktop)
-│   └── Social Media Links
-└── Main Content
-    ├── Hero (B)
-    ├── Projects (A)
-    │   └── ProjectCard(s)
-    ├── Technologies (I)
-    └── About (S)
-        └── ExperienceTimelineCard (f)
-```
-
----
-
-### Detailed Component Breakdown
-
-#### 1. **App Component** (`J`)
-
-**Purpose:** Root component that renders the entire application
+**Purpose:** Root component that orchestrates the entire application
 
 **Structure:**
-- Snowflake animation background
-- Fixed header
-- Main content sections
-- Mobile menu overlay
+```tsx
+<div className="relative min-h-screen overflow-x-hidden">
+  <MatrixRain />
+  <Navigation />
+  <main className="relative z-10">
+    <Hero />
+    <Projects />
+    <Technologies />
+    <Experience />
+    <Contact />
+  </main>
+</div>
+```
+
+**Features:**
+- Sets up smooth scrolling behavior
+- Manages global layout structure
+- Z-index layering for background and content
+- Cleanup on unmount
 
 ---
 
-#### 2. **Header/Navbar** (`E`)
+### 2. **MatrixRain Component** (`src/components/MatrixRain.tsx`)
 
-**Purpose:** Fixed navigation bar at the top of the page
+**Purpose:** Animated background effect with falling characters (Matrix-style)
 
 **Features:**
-- Fixed positioning (z-index: 20)
-- Dynamic blur effect on scroll (activates at 40px scroll)
-- Profile image logo
+- Canvas-based animation
+- Cyberpunk aesthetic
+- Optimized performance
+- Responsive to window resizing
+- **Opacity: 0.3** (updated from 0.08 for better visibility)
+
+**Implementation Details:**
+- Uses HTML5 Canvas API
+- Characters: Katakana, Latin, numbers
+- Green color scheme (#0F0)
+- Continuous animation loop
+- Background positioned at z-index 0
+
+---
+
+### 3. **Navigation Component** (`src/components/Navigation.tsx`)
+
+**Purpose:** Fixed header navigation bar
+
+**Features:**
+- Fixed positioning (stays at top on scroll)
+- Scroll-triggered effects (blur, shadow)
+- Logo with profile image
 - Navigation menu items
 - Social media links (GitHub, LinkedIn)
-- Height: 68px
+- Mobile-responsive hamburger menu
 
-**Scroll Behavior:**
-```javascript
-// Triggers at scrollY > 40
-if (scrollTop > 40) {
-  header.classList.add(
-    "backdrop-filter",
-    "backdrop-blur-sm",
-    "bg-[#181818aa]",
-    "shadow-md"
-  );
-}
-```
-
-**Desktop Navigation Items:**
+**Navigation Links:**
 - Projects → scrolls to #projects
 - Technologies → scrolls to #technologies
-- About → scrolls to #about
+- Experience → scrolls to #experience
+- Contact → scrolls to #contact
 
 **Social Links:**
 - GitHub: https://github.com/parintorn1902
 - LinkedIn: https://www.linkedin.com/in/parintorn-s-24579a179/
 
----
-
-#### 3. **Mobile Menu** (`O`)
-
-**Purpose:** Responsive mobile navigation overlay
-
-**Features:**
-- Hamburger toggle button (position: fixed, top-right)
+**Mobile Behavior:**
+- Hamburger menu on small screens
 - Full-screen overlay menu
-- Animated menu items (fadeInRight animation)
-- Staggered animation delays (0.35s, 0.4s, 0.45s, 0.5s)
-- Body scroll lock when menu is open
-- Social media links at bottom
-
-**Visibility:** Hidden on desktop (max-width: 767px triggers display)
-
-**Toggle Mechanism:**
-- Opens/closes with hamburger icon
-- Adds `menu-open` class to body
-- Toggles `full-menu` and `menu-list-open` classes
+- Touch-friendly interactions
 
 ---
 
-#### 4. **Hero/Landing Section** (`B`)
+### 4. **Hero Component** (`src/components/Hero.tsx`)
 
-**Purpose:** Welcome section with introduction and illustration
-
-**Layout:**
-- 3-column grid on desktop
-- 1-column on mobile
-- Left: Text content (2 columns)
-- Right: SVG illustration (1 column)
+**Purpose:** Landing section with introduction
 
 **Content:**
-```
-Title: "Welcome To My Personal Portfolio"
-Description: "Hello, I'm a Full Stack JavaScript Developer.
-I'm familiar with Node.js, React.js, React Native. I love coding
-and learning something new and also enjoy working with other people."
-```
+- Name: "Parintorn Sanguanpong"
+- Title: "Senior Software Engineer"
+- Description: Professional introduction
+- Tagline: "Building modern web experiences with code"
 
-**SVG Illustration:**
-- Custom character illustration (200x206px)
-- Animated elements:
-  - Human head (bobbing up/down, 0.5s loop)
-  - Human hands (vertical movement, 0.2s loop)
-  - Clouds (horizontal translation, 20s loop)
+**Layout:**
+- Centered content
+- Responsive typography
+- Large, impactful text
+- Animated entrance effects (Framer Motion)
+
+**Data Source:** `src/data/portfolio.ts` - `personalInfo` object
 
 ---
 
-#### 5. **Projects Section** (`A`)
+### 5. **Projects Component** (`src/components/Projects.tsx`)
 
 **Purpose:** Showcase portfolio projects with previews
 
-**Layout:**
-- 2-column grid (desktop)
-- 1-column grid (mobile)
+**Features:**
+- Responsive grid layout
 - Project cards with hover effects
+- Preview images
+- Links to live demos and source code
+- Technology tags
+
+**Data Source:** `src/data/portfolio.ts` - `projects` array
 
 **Project Card Structure:**
-```
-┌─────────────────────┐
-│  Preview Image      │ ← 208px height, object-cover
-├─────────────────────┤
-│  Project Name       │ ← Yellow/gold color (#eab021)
-│  Description        │
-│  [Live Demo]        │ ← Purple button (if available)
-│  [View Source]      │ ← Border button (if available)
-└─────────────────────┘
-```
+- Preview image (from public/images/)
+- Project name (title)
+- Description
+- Technology tags (badges)
+- Live Demo button (if available)
+- View Source button (GitHub link)
+
+**Current Projects:**
+1. **Netflix Clone**
+   - Next.js + Tailwind CSS
+   - Demo: https://parintorn.com/netflix
+   - Source: https://github.com/parintorn1902/my-netflix
+
+2. **Basic CRUD & JWT**
+   - Next.js + Chakra-UI + Node.js
+   - Source: https://github.com/parintorn1902/basic-react-node-crud
 
 **Interactions:**
-- Hover: scale(1.05) transform
-- Buttons open links in new tab (target="_blank")
-- Shadow effect (shadow-2xl)
+- Hover: Scale up, add glow effect
+- Click: Open link in new tab
 
 ---
 
-#### 6. **Technologies Section** (`I`)
+### 6. **Technologies Component** (`src/components/Technologies.tsx`)
 
 **Purpose:** Display front-end and back-end technology stack
 
 **Layout:**
-- 2-column grid (desktop)
-- 1-column grid (mobile)
-- Double border styling
+- Two-column grid (desktop)
+- Single column (mobile)
+- Icons with animations
+- Categorized tech lists
 
-**Columns:**
+**Categories:**
 
-**Front-End** (Yellow/gold border, #eab021)
-- Icon: React icon (spinning animation, 5s loop)
-- Technologies:
-  - React.js
-    - Next.js, CRA, Styled-components, Tailwind.css
-    - Chakra-UI, Material-UI, AntDesign, Semantic-UI, Bulma
-  - React Native
-    - React Native CLI, Expo, React Native Paper
-    - Native Android, Play Store publishing
+**Front-End:**
+- **React.js** ecosystem:
+  - Next.js, Vite, Tailwind CSS
+  - Shadcn-ui, Mantine UI, Chakra-UI, Material-UI, AntDesign, Semantic-UI, Bulma
+  - Prisma
+- **React Native**:
+  - React Native CLI, Expo
+  - Nativewind, Reanimated
+  - Native Modules, Expo Modules
+  - App publishing (Play Store, App Store)
 
-**Back-End** (Purple border, #7952B3)
-- Icon: Node.js icon (bouncing animation)
-- Technologies:
-  - Node.js
-    - Express, CORS, TypeORM, MongoDB, JWT, Multer
-    - ShellJS, BcryptJS, Axios, FS-Extra, PM2
-  - Java
-    - Spring Boot, Spring MVC, Spring Data JPA
-    - PostgreSQL, MongoDB, Spring Security, JWT, Lombok
+**Back-End:**
+- **Node.js**:
+  - Express, CORS, TypeORM, MongoDB, JWT
+  - Multer, ShellJS, BcryptJS, Axios, FS-Extra, PM2
+- **Golang**:
+  - Gin, GORM
+  - PostgreSQL, MongoDB
+  - JWT, REST API
+- **Java**:
+  - Spring Boot, Spring MVC, Spring Data JPA
+  - PostgreSQL, MongoDB
+  - Spring Security, JWT, Lombok
 
----
-
-#### 7. **About Section** (`S`)
-
-**Purpose:** Display skills, tools, and work experience
-
-**Subsections:**
-
-**Overviews:**
-1. **Skills**
-   - Modern Javascript, JSDoc, Typescript
-   - RESTful API, Docker, JSON, OOP
-   - Promise, Async/Await
-
-2. **Tools**
-   - VS Code, Android Studio, Postman
-   - Docker, FileZilla, Termius, DBeaver, Robo 3T
-
-3. **Clouds**
-   - AWS Lightsail, Digital Ocean
-   - Google Maps Platform, Firebase, Play Console
-
-**Work Experiences:**
-- Timeline layout with animated dots
-- Vertical timeline with gold accent line (#f8bb0f)
-
----
-
-#### 8. **Experience Timeline Card** (`f`)
-
-**Purpose:** Individual work experience entry
-
-**Structure:**
-```
-┌─ Timeline (vertical gold line)
-│
-●  ← Animated ping dot (purple)
-│
-└─ Card Content:
-   ├─ Position (bold, xl)
-   ├─ Workplace + Home/Office Icon
-   ├─ Period + Calendar Icon
-   ├─ Detail text/list
-   └─ Tech Stack Badges (rounded pills)
-```
-
-**Props:**
-- `period` - Date range (e.g., "2018 - Present")
-- `position` - Job title
-- `workplace` - Company name
-- `detail` - Description (JSX supported)
-- `wfh` - Boolean for work-from-home indicator
-- `techStacks` - Array of technology names
+**Data Source:** `src/data/portfolio.ts` - `technologies` object
 
 **Animations:**
-- Pulsing dot (animate-ping)
-- Purple background (#7952b3)
+- React icon: Spinning animation
+- Node icon: Bounce animation (optional)
+- Entrance animations via Framer Motion
 
 ---
 
-#### 9. **Topic Header** (`p`)
+### 7. **Experience Component** (`src/components/Experience.tsx`)
 
-**Purpose:** Reusable section title component
+**Purpose:** Display work experience timeline with skills
 
-**Structure:**
-```
-──────  ← Gradient line (purple to gold, 75px wide, 4px height)
+**Sections:**
 
-Section Title  ← Large semibold text (text-5xl)
+**1. Skills Overview:**
+
+**Programming:**
+- TypeScript, Modern JavaScript, JSDoc
+- Golang, RESTful API, Docker
+- JSON, OOP, Promise, Async/Await
+
+**Tools:**
+- Cursor, VS Code, Android Studio
+- Postman, Docker, FileZilla, Termius
+- DBeaver, Robo 3T
+
+**AI Tools:**
+- Cursor AI, Claude Code
+- ChatGPT (Agent & Thinking Partner)
+- AI-Assisted Development, Prompt Engineering
+- AI for Design & Brainstorming
+
+**Cloud:**
+- AWS Lightsail, Digital Ocean
+- Google Maps Platform, Firebase
+- Play Console, App Store Connect
+
+**2. Work Experience Timeline:**
+
+**Visual Design:**
+- Vertical timeline with animated dots
+- Experience cards with details
+- Work location indicators (office/remote icons)
+- Technology stack badges
+
+**Current Experiences:**
+
+1. **Senior Software Engineer** @ TechBerry Company Limited
+   - Period: 2018 - Present
+   - Responsibilities:
+     - Design & develop products using modern technologies
+     - Continue release product and support issues
+     - Research new technologies and solutions to improve products
+     - Lead technical implementations and mentor junior developers
+   - Work Location: Office
+   - Tech Stack: React.js, React Native, Node.js, Golang, MongoDB, PostgreSQL, Docker
+
+2. **Freelancer** @ Home
+   - Period: 2015 - 2017
+   - Responsibilities:
+     - Outsourcing projects from partners
+   - Work Location: Home (Remote)
+   - Tech Stack: PHP, HTML, CSS, JS, Ajax, MySQL
+
+**Data Source:** `src/data/portfolio.ts` - `experiences` array, `skills` object
+
+---
+
+### 8. **Contact Component** (`src/components/Contact.tsx`)
+
+**Purpose:** Contact information and social links
+
+**Content:**
+- **Email:** parintorn1902@gmail.com
+- **GitHub:** https://github.com/parintorn1902
+- **LinkedIn:** https://www.linkedin.com/in/parintorn-s-24579a179/
+
+**Features:**
+- Icon links with hover effects
+- Centered layout
+- Responsive design
+- Email link (mailto:)
+- External links open in new tab
+
+**Data Source:** `src/data/portfolio.ts` - `personalInfo` object
+
+---
+
+### 9. **Custom Hook: useMousePosition** (`src/hooks/useMousePosition.ts`)
+
+**Purpose:** Track mouse position for interactive effects
+
+**Returns:**
+```typescript
+{
+  x: number;  // Mouse X coordinate
+  y: number;  // Mouse Y coordinate
+}
 ```
 
 **Usage:**
-- Projects section
-- Technologies section
-- About section
+- Interactive card effects
+- Cursor tracking
+- Mouse-following animations
+- Parallax effects
 
----
-
-#### 10. **Button Components**
-
-**Primary Button** (`D`)
-- Background: Purple (#7952B3)
-- Hover: Darker purple (#5e3996)
-- Use: "Live Demo" links
-
-**Secondary Button** (`P`)
-- Style: Border only (transparent bg)
-- Hover: Fill with #eee, text turns black
-- Use: "View Source" links
-
----
-
-#### 11. **Snowflake Animation** (`T`)
-
-**Purpose:** Decorative background effect
-
-**Details:**
-- 10 snowflake elements (❅ ❆ ❄)
-- CSS keyframe animations
-- Fall animation: 15s linear
-- Shake animation: 3s ease-in-out (lateral movement)
-- Infinite loop
-- Positioned absolutely, z-index: 0
-- Opacity: 0.25
+**Implementation:**
+- Uses `mousemove` event listener
+- Updates state on mouse movement
+- Cleanup on unmount
 
 ---
 
 ## Data Structures
 
-### Project Data
+### Portfolio Data (`src/data/portfolio.ts`)
 
-**Type:** Array of Project Objects
+This file contains all the content data for the portfolio in a centralized, type-safe format.
 
-**Schema:**
-```javascript
-{
-  projectId: number,              // Unique identifier
-  projectName: string,            // Display name
-  projectDesc: string,            // Short description
-  projectPreviewImage: string,    // Filename from /images/
-  projectDemoLink?: string,       // Optional live demo URL
-  projectSourceLink?: string      // Optional GitHub repo URL
-}
+#### Personal Information
+
+```typescript
+export const personalInfo = {
+  name: "Parintorn Sanguanpong",
+  title: "Senior Software Engineer",
+  description: "Hello, I'm a Senior Software Engineer specializing in full-stack development...",
+  tagline: "Building modern web experiences with code",
+  location: "Thailand",
+  github: "https://github.com/parintorn1902",
+  linkedin: "https://www.linkedin.com/in/parintorn-s-24579a179/",
+  email: "parintorn1902@gmail.com",
+};
 ```
 
-**Current Projects:**
+#### Project Interface & Data
 
-```javascript
-[
+```typescript
+export interface Project {
+  projectId: number;
+  projectName: string;
+  projectDesc: string;
+  projectPreviewImage: string;  // Filename in public/images/
+  projectDemoLink?: string;     // Optional live demo URL
+  projectSourceLink?: string;   // Optional GitHub repo URL
+  tags?: string[];              // Technology tags
+}
+
+export const projects: Project[] = [
   {
     projectId: 1,
     projectName: "Netflix Clone",
     projectDesc: "Next.js and Tailwind.css making the ultimate Netflix clone website",
     projectPreviewImage: "netflix-preview.png",
     projectDemoLink: "https://parintorn.com/netflix",
-    projectSourceLink: "https://github.com/parintorn1902/my-netflix"
+    projectSourceLink: "https://github.com/parintorn1902/my-netflix",
+    tags: ["Next.js", "Tailwind CSS", "React"],
   },
   {
     projectId: 2,
     projectName: "Basic CRUD & JWT",
     projectDesc: "Next.js with Chakra-UI and RESTful Node.js service with authentication",
     projectPreviewImage: "student-management-preview.png",
-    projectSourceLink: "https://github.com/parintorn1902/basic-react-node-crud"
-  }
-]
+    projectSourceLink: "https://github.com/parintorn1902/basic-react-node-crud",
+    tags: ["Next.js", "Chakra-UI", "Node.js", "JWT"],
+  },
+];
 ```
 
----
+#### Experience Interface & Data
 
-### Work Experience Data
-
-**Type:** Array of Experience Objects
-
-**Schema:**
-```javascript
-{
-  period: string,          // "YYYY - YYYY" or "YYYY - Present"
-  position: string,        // Job title
-  workplace: string,       // Company name
-  detail: JSX | string,    // Description (can contain HTML)
-  wfh: boolean,           // Work from home indicator
-  techStacks: string[]    // Array of technology names
+```typescript
+export interface Experience {
+  period: string;           // "YYYY - YYYY" or "YYYY - Present"
+  position: string;         // Job title
+  workplace: string;        // Company name
+  detail: string[];         // Array of responsibility strings
+  wfh: boolean;            // Work from home indicator
+  techStacks: string[];    // Array of technology names
 }
-```
 
-**Current Experiences:**
-
-```javascript
-[
+export const experiences: Experience[] = [
   {
     period: "2018 - Present",
-    position: "Full Stack JavaScript Developer",
+    position: "Senior Software Engineer",
     workplace: "TechBerry Company Limited",
-    detail: (
-      <ul>
-        <li>- Design & develop products</li>
-        <li>- Continue release product and support issues</li>
-        <li>- Research new technologies and solutions to improves the products</li>
-      </ul>
-    ),
-    wfh: false,  // Office work
-    techStacks: [
-      "React.js",
-      "React Native",
-      "Node.js",
-      "MongoDB",
-      "PostgreSQL",
-      "Docker"
-    ]
+    detail: [
+      "Design & develop products using modern technologies",
+      "Continue release product and support issues",
+      "Research new technologies and solutions to improves the products",
+      "Lead technical implementations and mentor junior developers",
+    ],
+    wfh: false,
+    techStacks: ["React.js", "React Native", "Node.js", "Golang", "MongoDB", "PostgreSQL", "Docker"],
   },
   {
     period: "2015 - 2017",
     position: "Freelancer",
     workplace: "Home",
-    detail: (
-      <ul>
-        <li>- Outsourcing projects from partners</li>
-      </ul>
-    ),
-    wfh: true,  // Work from home
-    techStacks: [
-      "PHP",
-      "HTML",
-      "CSS",
-      "JS",
-      "Ajax",
-      "MySQL"
+    detail: ["Outsourcing projects from partners"],
+    wfh: true,
+    techStacks: ["PHP", "HTML", "CSS", "JS", "Ajax", "MySQL"],
+  },
+];
+```
+
+#### Skills Data
+
+```typescript
+export const skills = {
+  programming: [
+    "Typescript", "Modern Javascript", "JSDoc", "Golang",
+    "RESTful API", "Docker", "JSON", "OOP", "Promise", "Async/Await",
+  ],
+  tools: [
+    "Cursor", "VS Code", "Android Studio", "Postman", "Docker",
+    "FileZilla", "Termius", "DBeaver", "Robo 3T",
+  ],
+  ai: [
+    "Cursor AI", "Claude Code", "ChatGPT (Agent & Thinking Partner)",
+    "AI-Assisted Development", "Prompt Engineering", "AI for Design & Brainstorming",
+  ],
+  cloud: [
+    "AWS Lightsail", "Digital Ocean", "Google Maps Platform",
+    "Firebase", "Play Console", "App Store Connect",
+  ],
+};
+```
+
+#### Technologies Structure
+
+```typescript
+export const technologies = {
+  frontend: {
+    category: "Front-End",
+    icon: "react",
+    techs: [
+      {
+        name: "React.js",
+        items: ["Next.js", "Vite", "Tailwind.css", "Shadcn-ui", "Mantine UI", ...]
+      },
+      {
+        name: "React Native",
+        items: ["React Native CLI", "Expo", "Nativewind", ...]
+      }
+    ]
+  },
+  backend: {
+    category: "Back-End",
+    icon: "node",
+    techs: [
+      { name: "Node.js", items: ["Express", "CORS", "TypeORM", ...] },
+      { name: "Golang", items: ["Gin", "GORM", ...] },
+      { name: "Java", items: ["Spring Boot", ...] }
     ]
   }
-]
+};
 ```
 
 ---
 
 ## Styling & Design
 
-### Color Palette
+### Color Palette (Cyberpunk Theme)
 
+**Primary Colors:**
 ```css
-:root {
-  --primaryColor: #7952b3;      /* Purple - main brand color */
-  --secondaryColor: #f8bb0f;    /* Gold/Yellow - accent color */
-  --fontColor: #e1e8eb;         /* Light gray - text color */
-  --bgColor: #222831;           /* Dark gray - background */
-}
+--color-bg: #05070f;              /* Dark background */
+--color-text: #e0e0e0;            /* Light text */
+--color-accent: #00ff41;          /* Matrix green */
+--color-accent-secondary: #0080ff; /* Blue accent */
 ```
 
-**Usage:**
-- **Purple (#7952B3)**: Buttons, badges, borders, accents
-- **Gold (#F8BB0F)**: Timeline, section accents, project titles
-- **Dark Background (#181818)**: Radial gradient base
-- **Dark Gray (#222831)**: Content background, overlays
-- **Light Gray (#E1E8EB)**: Text color
+**Matrix Effect:**
+```css
+--matrix-color: #0F0;             /* Bright green */
+--matrix-opacity: 0.3;            /* Background opacity */
+```
+
+**Theme Characteristics:**
+- Dark cyberpunk aesthetic
+- Matrix-style green accents
+- High contrast for readability
+- Neon glow effects on hover
+- Futuristic, tech-focused design
 
 ### Typography
 
-**Font Family:** Inter (Google Fonts)
-- Weights: 400 (regular), 700 (bold), 800 (extra bold)
+**Font Strategy:**
+- System fonts or Google Fonts
+- Clean, modern sans-serif
+- High readability
 
-**Font Sizes:**
-- `text-5xl`: 3rem (48px) - Section headers
-- `text-xl`: 1.25rem (20px) - Subsection titles
-- `text-lg`: 1.125rem (18px) - Body text emphasis
-- `text-base`: 1rem (16px) - Default body
-- `text-sm`: 0.875rem (14px) - Small text
-
-**Letter Spacing:** 0.025em (global)
-
-### Background
-
-**Type:** Radial gradient
-
-```css
-background-image: radial-gradient(#222831 50%, #181818 100%);
-```
-
-Creates a subtle depth effect with lighter center fading to darker edges.
+**Font Sizes (Tailwind):**
+- `text-6xl` / `text-5xl`: Hero titles (3rem - 4rem / 48px - 64px)
+- `text-3xl` / `text-2xl`: Section headers (1.875rem - 3rem / 30px - 48px)
+- `text-xl`: Subsection titles (1.25rem / 20px)
+- `text-lg`: Emphasized body (1.125rem / 18px)
+- `text-base`: Default body (1rem / 16px)
+- `text-sm`: Small text (0.875rem / 14px)
 
 ### Responsive Breakpoints
 
 Based on Tailwind CSS defaults:
 
-| Breakpoint | Max Width | Classes | Use Case |
+| Breakpoint | Min Width | Classes | Use Case |
 |------------|-----------|---------|----------|
-| `sm` | 639px | `sm:` | Mobile phones |
-| `md` | 767px | `md:` | Tablets (portrait) |
-| `lg` | 1023px | `lg:` | Tablets (landscape) |
-| Desktop | > 1024px | Default | Desktop screens |
+| `sm` | 640px | `sm:` | Small tablets, large phones |
+| `md` | 768px | `md:` | Tablets (portrait) |
+| `lg` | 1024px | `lg:` | Tablets (landscape), small desktops |
+| `xl` | 1280px | `xl:` | Desktop screens |
+| `2xl` | 1536px | `2xl:` | Large desktops |
 
 **Common Responsive Patterns:**
-
-```css
-/* Default: Desktop (3 columns) */
-grid-cols-3
-
-/* Tablet: 1 column */
-md:grid-cols-1
-
-/* Mobile: 1 column */
-sm:grid-cols-1
+```tsx
+// Mobile-first approach
+className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
 ```
-
----
 
 ### Animations
 
-#### CSS Keyframe Animations
+#### Framer Motion Animations
 
-**1. Snowflake Animations**
-
-```css
-/* Fall animation */
-@keyframes snowflakes-fall {
-  0% { top: -10px }
-  100% { top: 2000px }
-}
-/* Duration: 15s, linear */
-
-/* Shake animation (lateral movement) */
-@keyframes snowflakes-shake {
-  0% { transform: translate(0) }
-  50% { transform: translate(80px) }
-  100% { transform: translate(0) }
-}
-/* Duration: 3s, ease-in-out */
+**Entrance Animations:**
+```tsx
+initial={{ opacity: 0, y: 20 }}
+animate={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.5 }}
 ```
 
-**2. Human Character Animations**
-
-```css
-/* Head bobbing */
-@keyframes human-head {
-  0% { transform: translateY(5px) }
-  100% { transform: translateY(10px) }
-}
-/* Duration: 0.5s, linear, infinite alternate */
-
-/* Right hand */
-@keyframes human-right-hand {
-  0% { transform: translateY(1px) }
-  100% { transform: translateY(3px) }
-}
-/* Duration: 0.2s, linear, infinite alternate */
-
-/* Left hand (0.1s delay) */
-@keyframes human-left-hand {
-  0% { transform: translateY(2px) }
-  100% { transform: translateY(0) }
-}
-/* Duration: 0.2s, linear, infinite alternate */
+**Hover Effects:**
+```tsx
+whileHover={{ scale: 1.05 }}
+whileTap={{ scale: 0.95 }}
 ```
 
-**3. Cloud Animations**
+**Scroll-Triggered Animations:**
+- Fade in on scroll
+- Stagger animations for lists
+- Parallax effects (optional)
 
+**Common Animation Patterns:**
+- Cards: Scale up on hover
+- Buttons: Slight scale + glow
+- Icons: Rotate or bounce
+- Sections: Fade in from bottom
+
+#### CSS Animations
+
+**Matrix Rain:**
+- Canvas-based animation
+- Continuous falling characters
+- Green color (#0F0)
+- Opacity 0.3
+
+**Transitions:**
 ```css
-/* Cloud 1 - simple horizontal */
-@keyframes cloud1 {
-  0% { transform: translate3d(-45px, 0, 0) }
-  100% { transform: translate3d(70px, 10px, 0) }
-}
-/* Duration: 20s, linear, infinite */
-
-/* Cloud 2 - complex path */
-@keyframes cloud2 {
-  0% { transform: translate3d(35px, 0, 0) }
-  33% { transform: translate3d(0, -5px, 0) }
-  66% { transform: translate3d(-30px, -5px, 0) }
-  100% { transform: translate3d(-60px, 15px, 0) }
-}
-/* Duration: 20s, linear, infinite */
+transition: all 0.3s ease;
+transition: transform 0.2s ease-in-out;
 ```
 
-**4. Mobile Menu Animation**
-
-```css
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    transform: translate(20px, 20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0, 0);
-  }
-}
-/* Duration: 0.3s, ease, with staggered delays */
-/* Item delays: 0.35s, 0.4s, 0.45s, 0.5s */
-```
-
-**5. Page Fade-In**
-
-```css
-@keyframes fade-in {
-  0% { opacity: 0 }
-  100% { opacity: 1 }
-}
-/* Duration: 0.25s, ease-in */
-/* Applied to entire app on load */
-```
-
-#### Tailwind Animations
-
-```css
-animate-ping       /* Pulsing dot: scale + fade */
-animate-spin-slow  /* Icon rotation: 5s */
-animate-bounce     /* Vertical bounce: 1s */
-animate-fade-in    /* Opacity fade: 0.25s */
-```
-
----
-
-### Hover Effects
-
-**Navigation Links:**
-```css
-.nav-menu-item:hover::after {
-  /* Animated underline that slides in from left */
-  transform: translate(0);
-  transition: transform 0.2s ease-in;
-}
-```
-
-**Project Cards:**
-```css
-.project-card:hover {
-  transform: scale(1.05);
-  transition: transform 0.15s;
-}
-```
-
-**Buttons:**
-```css
-/* Primary button hover */
-background: #7952B3 → #5e3996 (darker purple)
-
-/* Secondary button hover */
-border + transparent → filled #eee + black text
-```
-
----
-
-### Shadows
-
-```css
-shadow-md     /* Header on scroll: 0 4px 6px rgba(0,0,0,0.1) */
-shadow-2xl    /* Project cards: 0 25px 50px rgba(0,0,0,0.25) */
-```
-
----
-
-### Border Styles
-
-**Timeline:** Vertical gold line (1px wide, #f8bb0f)
-
-**Technology sections:** Double border (4px width)
-- Front-End: Gold (#eab021)
-- Back-End: Purple (#7952B3)
-
-**Tech stack badges:** Rounded pill (2px white border)
-
-**Accent lines:** Gradient (purple to gold, 4px height)
+**Hover Glows:**
+- Box shadow animations
+- Color transitions
+- Border glows
 
 ---
 
 ## Features
 
-### 1. Dynamic Scroll Header
+### 1. Matrix Rain Background
 
-**Behavior:**
-- Default: Transparent background, no blur
-- Scrolled (>40px): Blurred background, shadow, semi-transparent dark bg
+**Implementation:** `src/components/MatrixRain.tsx`
 
-**Implementation:**
-```javascript
-useEffect(() => {
-  const handleScroll = () => {
-    if (scrollY > 40) {
-      header.add("backdrop-blur-sm", "bg-[#181818aa]", "shadow-md");
-    } else {
-      header.remove("backdrop-blur-sm", "bg-[#181818aa]", "shadow-md");
-    }
-  };
-  document.addEventListener("scroll", handleScroll);
-});
-```
+**Features:**
+- HTML5 Canvas animation
+- Cyberpunk aesthetic with falling characters
+- Optimized for performance
+- Responsive to window resize
+- **Opacity: 0.3** (updated for better visibility)
+
+**Technical Details:**
+- Characters: Katakana (カタカナ), Latin, numbers
+- Color: Bright green (#0F0)
+- Animation: Continuous loop
+- Z-index: 0 (background layer)
 
 ---
 
 ### 2. Smooth Scroll Navigation
 
-**Mechanism:**
-- Anchor-based (no URL hash changes)
-- Smooth scroll behavior
-- 50px offset for fixed header clearance
-
-**Sections:**
-- #projects
-- #technologies
-- #about
-
-**Works in:**
-- Desktop navigation menu
-- Mobile menu overlay
-
----
-
-### 3. Responsive Mobile Menu
-
 **Features:**
-- Hamburger icon toggle
-- Full-screen overlay (100vh)
-- Blurred background (backdrop-filter: blur(3px))
-- Animated list items (fadeInRight)
-- Body scroll lock when open
+- Anchor-based navigation
+- Smooth scroll behavior
+- Fixed header
+- Mobile hamburger menu
+- Section highlighting (optional)
 
-**States:**
-```javascript
-// Closed
-visibility: hidden
+**Implementation:**
+```typescript
+// Global smooth scroll
+document.documentElement.style.scrollBehavior = 'smooth';
 
-// Open
-visibility: visible
-width: 100%
-height: 100vh
-background: #222831ee
-backdrop-filter: blur(3px)
+// Scroll to section
+const element = document.getElementById('projects');
+element?.scrollIntoView({ behavior: 'smooth' });
 ```
 
+**Benefits:**
+- No page reloads
+- Smooth user experience
+- Works on all modern browsers
+
 ---
 
-### 4. Inline SVG Illustration
+### 3. Responsive Design
 
-**Location:** Hero section
+**Approach:** Mobile-first
 
 **Features:**
-- Custom-drawn character (200x206px)
-- Multiple animated elements
-- Embedded directly in JSX (no external file)
-- Complex vector paths
+- Breakpoint-based layouts
+- Responsive typography
+- Touch-friendly interactions
+- Hamburger menu for mobile
+- Optimized images
 
-**Animated Elements:**
-- Human head, hands, clothing
-- Clouds moving in background
-
----
-
-### 5. Project Cards
-
-**Interactive Elements:**
-- Preview image (object-cover, top-aligned)
-- Project name (gold color)
-- Description text
-- Action buttons (conditional rendering)
-  - Live Demo (if `projectDemoLink` exists)
-  - View Source (if `projectSourceLink` exists)
-
-**Hover Effect:**
-- Scale up to 105%
-- Transition: 0.15s
+**Testing:** Works on phones, tablets, desktops (320px - 2560px)
 
 ---
 
-### 6. Animated Timeline
+### 4. Interactive Project Cards
 
 **Features:**
-- Vertical gold timeline bar
-- Pulsing animated dots
-- Experience cards with tech badges
+- Hover effects (scale, glow)
+- Preview images
+- Technology tags
+- External links (demo, source)
+- Responsive grid layout
+
+**Interactions:**
+- **Hover:** Scale up (1.05x), add glow
+- **Click:** Open demo/source in new tab
+- **Mobile:** Touch-friendly tap areas
+
+**Data-Driven:**
+- All projects defined in `src/data/portfolio.ts`
+- Easy to add/remove projects
+- Type-safe with TypeScript
+
+---
+
+### 5. Animated Timeline
+
+**Features:**
+- Vertical timeline design
+- Animated dots/markers
+- Experience cards
 - Work location icons (home/office)
-- Period and position details
+- Technology badges
 
 **Visual Hierarchy:**
-- Timeline provides visual connection
-- Dots create focal points
+- Timeline line provides structure
+- Dots mark each experience
 - Cards contain detailed information
+- Icons add visual interest
+
+**Animations:**
+- Dots: Pulse or fade in
+- Cards: Slide in from side
+- Badges: Stagger animation
 
 ---
 
-### 7. Technology Showcase
-
-**Layout:**
-- Split into Front-End and Back-End
-- Bordered sections with double lines
-- Icon animations (spin vs bounce)
-
-**Color Coding:**
-- Front-End: Gold border + spinning React icon
-- Back-End: Purple border + bouncing Node.js icon
-
----
-
-### 8. Social Media Integration
+### 6. Social Media Integration
 
 **Platforms:**
-- GitHub: https://github.com/parintorn1902
-- LinkedIn: https://www.linkedin.com/in/parintorn-s-24579a179/
+- **GitHub:** Code repositories and open source
+- **LinkedIn:** Professional network
+- **Email:** Direct contact
 
 **Locations:**
-- Desktop: Header right side
-- Mobile: Bottom of overlay menu
+- Navigation header (desktop)
+- Mobile menu
+- Contact section
 
-**Icons:** From react-icons library
+**Implementation:**
+- Icon links from react-icons
+- Open in new tab (`target="_blank"`)
+- Security: `rel="noopener noreferrer"`
 
 ---
 
-### 9. SEO Optimizations
+### 7. SEO Optimizations
 
-**Meta Tags:**
+**Meta Tags in `index.html`:**
 ```html
-<meta name="description" content="This is my personal portfolio website !">
-<meta name="theme-color" content="#181818">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parintorn Sanguanpong</title>
+<meta name="description" content="Parintorn Sanguanpong - Senior Software Engineer. Specialized in React.js, React Native, Node.js, Golang, and modern web technologies." />
+<meta name="keywords" content="Parintorn, Sanguanpong, Senior Software Engineer, JavaScript, React, Node.js, Golang, Web Developer, Portfolio" />
+<meta name="author" content="Parintorn Sanguanpong" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Parintorn Sanguanpong - Senior Software Engineer" />
+<meta name="theme-color" content="#05070f" />
 ```
 
-**Semantic HTML:**
-- Proper heading hierarchy
-- Meaningful section IDs
-- Alt text on images
-- ARIA labels on buttons
-
-**Performance:**
-- Minified assets
-- Content hashing for cache busting
-- Module preloading
-- Optimized bundle splitting
+**Benefits:**
+- Better search engine indexing
+- Social media preview cards (Open Graph)
+- Improved discoverability
+- Professional appearance in search results
 
 ---
 
-### 10. External Link Handling
+### 8. TypeScript Type Safety
 
-**Security:**
-- `target="_blank"` for external links
-- `rel="noopener"` for security (inferred from React defaults)
+**Features:**
+- Full TypeScript coverage in `src/`
+- Type definitions for all data structures
+- Compile-time error checking
+- Better IDE support (autocomplete, refactoring)
+- Interfaces for components and data
 
-**Use Cases:**
-- Project demo links
-- GitHub repository links
-- Social media profiles
+**Configuration:**
+- Strict mode enabled
+- Separate configs for app and Vite
+- Type checking before build
+
+**Benefits:**
+- Catch errors early
+- Self-documenting code
+- Safer refactoring
+- Better developer experience
+
+---
+
+### 9. Performance Optimizations
+
+**Code Splitting:**
+- Vendor chunks (React, Framer Motion)
+- Automatic chunk splitting by Vite
+
+**Build Optimizations:**
+- esbuild minification (fast)
+- No sourcemaps in production
+- Tree shaking (remove unused code)
+- CSS extraction and minification
+
+**Runtime Optimizations:**
+- React 19 concurrent features
+- Optimized re-renders
+- Efficient canvas animation (Matrix rain)
 
 ---
 
 ## Build & Deployment
 
-### Build Configuration
+### Build Configuration (`vite.config.ts`)
 
-**Tool:** Vite
+```typescript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-**Output Structure:**
+export default defineConfig({
+  plugins: [react()],
+  base: '/',  // GitHub Pages base path
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'animation-vendor': ['framer-motion'],
+        },
+      },
+    },
+  },
+})
+```
+
+**Build Output Structure:**
 ```
 dist/
-├── index.html
+├── index.html                          # Entry point (transformed)
+├── favicon.svg                         # Favicon
+├── vite.svg                           # Vite logo
 ├── assets/
-│   ├── index.[hash].js      # App code
-│   ├── vendor.[hash].js     # Dependencies
-│   └── index.[hash].css     # Styles
+│   ├── index-[hash].js                # Main app bundle
+│   ├── react-vendor-[hash].js         # React vendor chunk
+│   ├── animation-vendor-[hash].js     # Framer Motion chunk
+│   └── index-[hash].css               # Compiled CSS
 └── images/
-    └── [image files]
+    └── [project preview images]
 ```
 
 **Bundle Characteristics:**
 - ES modules format
-- Content hash naming (e.g., `index.1351db88.js`)
-- Code splitting (vendor vs app)
+- Content hash naming (cache busting)
+- Code splitting (vendor chunks separate from app code)
 - CSS extraction
-- Asset optimization
-
-**File Sizes:**
-| Asset | Size |
-|-------|------|
-| App JS | ~46KB |
-| Vendor JS | ~143KB |
-| CSS | ~19KB |
-| **Total** | **~208KB** |
-
-**Estimated GZIP:** ~65KB
+- Minified with esbuild (fast, efficient)
 
 ---
 
-### Deployment Method
+### GitHub Actions Deployment (`.github/workflows/deploy.yml`)
 
-**Platform:** GitHub Pages
+**Trigger Events:**
+- Push to `master` branch
+- Manual dispatch (workflow_dispatch)
 
-**Type:** User/Organization Pages
-- Repository: `parintorn1902.github.io`
-- Branch: `main` (root directory)
-- Auto-deploy on push
+**Workflow Jobs:**
 
-**Custom Domain:**
-- Domain: parintorn.com
-- DNS: CNAME record → parintorn1902.github.io
-- HTTPS: Enabled (GitHub Pages default)
+#### 1. Build Job
 
-**URL Structure:**
-- Primary: https://parintorn.com
-- GitHub: https://parintorn1902.github.io
-
----
-
-### Deployment History (Git Commits)
-
-| Date | Commit | Change |
-|------|--------|--------|
-| Oct 8, 2022 | 74e6855 | fix tiny icon on mobile |
-| Sep 17, 2022 | b2b0b76 | update information |
-| Sep 11, 2022 | 04c527b | update domain |
-| Sep 3, 2022 | e93dcf1 | improve SEO |
-| Sep 2, 2022 | f84dd5c | enhance website after Chrome Lighthouse test |
-| Aug 28, 2022 | d432445 | update mobile header color |
-
-**Pattern:** Regular updates with focus on optimization and bug fixes
-
----
-
-### Performance Optimizations
-
-Based on git history, the following optimizations were made:
-
-1. **Chrome Lighthouse Testing** (Sep 2, 2022)
-   - Enhanced website based on Lighthouse recommendations
-   - SEO improvements
-
-2. **SEO Enhancements** (Sep 3, 2022)
-   - Meta tags
-   - Semantic HTML
-   - Performance tuning
-
-3. **Mobile Optimizations**
-   - Icon size fixes
-   - Header color updates
-   - Responsive design refinements
-
----
-
-## Development Notes
-
-### Important Considerations
-
-#### 1. **Repository Type**
-
-This is a **deployment repository**, not a development repository.
-
-- ✅ Contains: Compiled build output
-- ❌ Missing: Source code, package.json, config files
-
-**Implication:** To make changes, you need the original source repository (not included here).
-
----
-
-#### 2. **Source Code Location**
-
-The source code likely exists in a separate private repository or local development environment.
-
-**Inferred Source Structure:**
-```
-[source-repo]/
-├── src/
-│   ├── components/
-│   │   ├── Header.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Technologies.jsx
-│   │   ├── About.jsx
-│   │   ├── ExperienceCard.jsx
-│   │   ├── MobileMenu.jsx
-│   │   └── ...
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-│   └── images/
-├── index.html
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-└── postcss.config.js
+```yaml
+- Checkout repository
+- Setup Node.js 20 with npm cache
+- Install dependencies (npm ci)
+- Build project (npm run build → creates dist/)
+- Add .nojekyll file (prevents Jekyll processing)
+- Setup GitHub Pages
+- Upload artifact (dist/ folder)
 ```
 
----
+#### 2. Deploy Job
 
-#### 3. **Making Updates**
-
-To update this website:
-
-1. Make changes in source repository
-2. Run build command: `vite build`
-3. Copy `dist/` contents to this repository
-4. Commit and push to main branch
-5. GitHub Pages auto-deploys
-
-**Typical Workflow:**
-```bash
-# In source repo
-npm run build
-
-# Copy to deployment repo
-cp -r dist/* /path/to/parintorn1902.github.io/
-
-# Commit and push
-cd /path/to/parintorn1902.github.io/
-git add .
-git commit -m "Update content"
-git push origin main
+```yaml
+- Deploy artifact to GitHub Pages
+- Set environment URL
 ```
 
----
+**Key Configuration:**
 
-#### 4. **Content Updates**
+```yaml
+on:
+  push:
+    branches:
+      - master  # Triggers on push to master
+  workflow_dispatch:  # Allows manual triggering
 
-Since this is compiled code, content changes require:
-
-1. **Editing source files** (not in this repo)
-2. **Rebuilding** with Vite
-3. **Redeploying** to GitHub Pages
-
-**Content Files (in source repo):**
-- Project data: Likely in `src/data/projects.js` or inline in `Projects.jsx`
-- Experience data: Likely in `src/data/experiences.js` or inline in `About.jsx`
-- Personal info: Likely in `src/data/profile.js` or inline in `Hero.jsx`
-
----
-
-#### 5. **Technology Migration**
-
-**Historical Note:** The website migrated from Next.js to Vite (March 8, 2022)
-
-**Reasons (inferred):**
-- Faster build times
-- Simpler deployment (static export)
-- No server-side rendering needed (portfolio is static)
-- Better developer experience for SPA
-
----
-
-#### 6. **Dependencies (Inferred)**
-
-Based on compiled code analysis:
-
-**Production:**
-```json
-{
-  "react": "^18.0.0",
-  "react-dom": "^18.0.0",
-  "react-icons": "^4.0.0"
-}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 ```
-
-**Development:**
-```json
-{
-  "vite": "^3.0.0",
-  "tailwindcss": "^3.0.0",
-  "postcss": "^8.0.0",
-  "autoprefixer": "^10.0.0"
-}
-```
-
----
-
-#### 7. **Browser Compatibility**
-
-**Target Browsers:**
-- Modern browsers (ES6+ support)
-- Uses ES modules (no legacy fallback in this build)
-
-**Features Used:**
-- CSS Grid
-- Flexbox
-- CSS custom properties
-- Backdrop filter
-- ES6+ JavaScript
-
-**Minimum Browser Versions:**
-- Chrome 61+
-- Firefox 60+
-- Safari 11+
-- Edge 79+
-
----
-
-#### 8. **Accessibility**
 
 **Features:**
-- Semantic HTML tags
-- ARIA labels on interactive elements
-- Keyboard navigation (default browser behavior)
-- Sufficient color contrast (light text on dark bg)
-- Responsive font sizes
-
-**Potential Improvements:**
-- Focus indicators on interactive elements
-- Skip navigation link
-- Reduced motion preferences
-- Screen reader testing
+- Automatic deployment on push
+- npm cache for faster builds (caches node_modules)
+- Artifact-based deployment (clean, reliable)
+- Proper permissions (read contents, write pages)
+- .nojekyll file prevents GitHub Pages from ignoring files starting with `_`
 
 ---
 
-#### 9. **Performance Metrics**
+### Deployment Flow
 
-**Current Bundle:**
-- Initial load: ~208KB (uncompressed)
-- GZIP estimated: ~65KB
-- Images: 766KB total (largest: netflix-preview.png at 744KB)
+**Complete Flow:**
 
-**Optimization Opportunities:**
-- Image optimization (WebP format, compression)
-- Lazy loading for images
-- Code splitting for sections
-- Service worker for caching
+1. **Developer pushes to master branch**
+2. **GitHub Actions triggered automatically**
+3. **Build job runs:**
+   - Installs Node.js and dependencies
+   - Runs TypeScript compilation (`tsc -b`)
+   - Runs Vite build
+   - Creates optimized dist/ folder
+   - Adds .nojekyll file
+4. **Upload artifact:**
+   - Uploads dist/ folder as GitHub Pages artifact
+5. **Deploy job runs:**
+   - Deploys artifact to GitHub Pages
+   - Site goes live at https://parintorn1902.github.io
+6. **Custom domain (parintorn.com) points to GitHub Pages**
+
+**Deployment Time:** ~2-3 minutes total
 
 ---
 
-#### 10. **Custom Domain Setup**
+### Custom Domain Configuration
 
-**DNS Configuration:**
+**DNS Setup:**
 ```
 Type: CNAME
 Name: @ (or www)
@@ -1228,127 +1027,707 @@ Value: parintorn1902.github.io
 
 **GitHub Pages Settings:**
 - Custom domain: parintorn.com
-- Enforce HTTPS: Enabled
-- Source: main branch, / (root)
+- Enforce HTTPS: Enabled (automatic)
+- Source: GitHub Actions deployment
+
+**URLs:**
+- Primary: https://parintorn.com
+- GitHub: https://parintorn1902.github.io
+
+---
+
+## Development Guide
+
+### Local Development Setup
+
+**Prerequisites:**
+- Node.js 20+ (LTS recommended)
+- npm (comes with Node.js)
+
+**Installation:**
+
+```bash
+# Clone repository
+git clone https://github.com/parintorn1902/parintorn1902.github.io.git
+cd parintorn1902.github.io
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Open browser to http://localhost:5173
+```
+
+**Development Commands:**
+
+```bash
+npm install          # Install dependencies
+npm run dev         # Start dev server (hot reload)
+npm run build       # Build for production
+npm run preview     # Preview production build locally
+npm run lint        # Run ESLint
+```
+
+**Development Server:**
+- URL: http://localhost:5173
+- Hot Module Replacement (HMR)
+- Fast refresh for React components
+- TypeScript type checking in IDE
+
+---
+
+### Project Structure Best Practices
+
+**Components:**
+- One component per file
+- Use TypeScript (.tsx extension)
+- Export as default
+- Define Props interface above component
+- Use functional components with hooks
+
+**Example:**
+```tsx
+// src/components/MyComponent.tsx
+interface MyComponentProps {
+  title: string;
+  count?: number;
+}
+
+function MyComponent({ title, count = 0 }: MyComponentProps) {
+  return <div>{title}: {count}</div>;
+}
+
+export default MyComponent;
+```
+
+**Data:**
+- Centralized in `src/data/portfolio.ts`
+- Type-safe interfaces
+- Easy to update content
+- Separation of data and presentation
+
+**Styles:**
+- Tailwind utility classes preferred
+- Custom CSS in `src/index.css` for:
+  - Global styles
+  - Animations
+  - Custom utilities
+- Responsive-first approach
+
+**Assets:**
+- Images in `public/images/`
+- Icons via react-icons library
+- Fonts via Google Fonts or system fonts
+- Static files in `public/` (copied to dist/)
+
+---
+
+### Adding Content
+
+#### Adding a New Project
+
+**Steps:**
+
+1. **Add project image** to `public/images/`:
+   ```bash
+   # Copy image to public/images/
+   cp my-project-preview.png public/images/
+   ```
+
+2. **Update `src/data/portfolio.ts`:**
+   ```typescript
+   export const projects: Project[] = [
+     // ... existing projects
+     {
+       projectId: 3,  // Increment ID
+       projectName: "My New Project",
+       projectDesc: "Description of the project and technologies used",
+       projectPreviewImage: "my-project-preview.png",
+       projectDemoLink: "https://demo.example.com",  // Optional
+       projectSourceLink: "https://github.com/username/repo",  // Optional
+       tags: ["React", "TypeScript", "Tailwind"],  // Optional
+     },
+   ];
+   ```
+
+3. **Test locally:**
+   ```bash
+   npm run dev
+   # Check http://localhost:5173/#projects
+   ```
+
+4. **Build and deploy:**
+   ```bash
+   git add .
+   git commit -m "Add new project: My New Project"
+   git push origin master
+   # GitHub Actions will auto-deploy
+   ```
+
+---
+
+#### Updating Work Experience
+
+**Edit `src/data/portfolio.ts`:**
+
+```typescript
+export const experiences: Experience[] = [
+  {
+    period: "2023 - Present",
+    position: "Lead Software Engineer",
+    workplace: "New Company",
+    detail: [
+      "Lead team of 5 developers",
+      "Architected microservices infrastructure",
+      "Improved performance by 40%",
+    ],
+    wfh: false,  // true for remote work
+    techStacks: ["TypeScript", "Node.js", "React", "Docker", "Kubernetes"],
+  },
+  // ... other experiences
+];
+```
+
+**Commit and push:**
+```bash
+git add src/data/portfolio.ts
+git commit -m "Update work experience"
+git push origin master
+```
+
+---
+
+#### Updating Skills or Technologies
+
+**Edit `src/data/portfolio.ts`:**
+
+**Skills:**
+```typescript
+export const skills = {
+  programming: [
+    "TypeScript",  // Add new skills
+    "Rust",        // Add new skills
+    // ... existing skills
+  ],
+  tools: [
+    "Neovim",     // Add new tools
+    // ... existing tools
+  ],
+  ai: [
+    "GitHub Copilot",  // Add new AI tools
+    // ... existing AI tools
+  ],
+  cloud: [
+    "Vercel",     // Add new cloud platforms
+    // ... existing platforms
+  ],
+};
+```
+
+**Technologies:**
+```typescript
+export const technologies = {
+  frontend: {
+    category: "Front-End",
+    icon: "react",
+    techs: [
+      {
+        name: "React.js",
+        items: [
+          "Next.js 14",    // Update versions
+          "Remix",         // Add new frameworks
+          // ... existing items
+        ],
+      },
+    ],
+  },
+  backend: {
+    // ... similar updates
+  },
+};
+```
+
+---
+
+### Customizing Styles
+
+#### Tailwind Configuration (`tailwind.config.js`)
+
+**Customize colors:**
+```javascript
+export default {
+  theme: {
+    extend: {
+      colors: {
+        'matrix-green': '#00ff41',
+        'cyber-blue': '#0080ff',
+        // Add custom colors
+      },
+    },
+  },
+};
+```
+
+**Customize fonts, spacing, breakpoints, etc.**
+
+#### Global Styles (`src/index.css`)
+
+**Add custom animations:**
+```css
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #00ff41;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ff41;
+  }
+}
+
+.glow-on-hover:hover {
+  animation: glow 2s infinite;
+}
+```
+
+**Import fonts:**
+```css
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+```
+
+#### Component Styles
+
+**Use Tailwind utility classes:**
+```tsx
+<div className="bg-gray-900 text-green-500 p-4 rounded-lg hover:scale-105 transition">
+  Content
+</div>
+```
+
+---
+
+### TypeScript Configuration
+
+**Main Config (`tsconfig.json`):**
+```json
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+```
+
+**App Config (`tsconfig.app.json`):**
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    // ... more options
+  },
+  "include": ["src"]
+}
+```
+
+**Node Config (`tsconfig.node.json`):**
+```json
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    // ... for Vite config
+  },
+  "include": ["vite.config.ts"]
+}
+```
 
 ---
 
 ## Maintenance Guide
 
-### Adding a New Project
+### Updating Dependencies
 
-1. Locate project data in source repository
-2. Add new project object:
-   ```javascript
-   {
-     projectId: 3,
-     projectName: "New Project",
-     projectDesc: "Description here",
-     projectPreviewImage: "new-preview.png",
-     projectDemoLink: "https://example.com",
-     projectSourceLink: "https://github.com/username/repo"
-   }
-   ```
-3. Add preview image to `public/images/`
-4. Rebuild and redeploy
+**Check for updates:**
+```bash
+npm outdated
+```
+
+**Update all packages:**
+```bash
+npm update
+```
+
+**Update specific package:**
+```bash
+npm install react@latest react-dom@latest
+npm install framer-motion@latest
+```
+
+**Update dev dependencies:**
+```bash
+npm install -D vite@latest @vitejs/plugin-react@latest
+npm install -D typescript@latest
+```
+
+**After updating:**
+```bash
+# Test build
+npm run build
+
+# Test locally
+npm run preview
+
+# Commit if everything works
+git add package.json package-lock.json
+git commit -m "Update dependencies"
+git push origin master
+```
 
 ---
 
-### Updating Work Experience
+### Troubleshooting
 
-1. Locate experience data in source repository
-2. Add/edit experience object:
-   ```javascript
-   {
-     period: "2023 - Present",
-     position: "Senior Developer",
-     workplace: "New Company",
-     detail: <ul><li>- Responsibilities</li></ul>,
-     wfh: false,
-     techStacks: ["Tech1", "Tech2"]
-   }
-   ```
-3. Rebuild and redeploy
+#### Build Fails
+
+**Symptom:** `npm run build` fails with TypeScript errors
+
+**Solution:**
+1. Check error messages for type issues
+2. Fix type errors in code
+3. Ensure all imports are correct
+4. Run `npm run lint` to check for other issues
+
+**Common Issues:**
+- Missing type definitions: `npm install -D @types/node`
+- Import errors: Check file paths and extensions
+- TypeScript version mismatch: Update TypeScript
 
 ---
 
-### Changing Colors
+#### Deployment Fails
 
-1. Edit Tailwind config or CSS variables:
+**Symptom:** GitHub Actions workflow fails
+
+**Solution:**
+1. Check GitHub Actions logs (Actions tab on GitHub)
+2. Look for error in build or deploy job
+3. Common issues:
+   - npm install failed: Check package.json
+   - Build failed: TypeScript errors (see above)
+   - Deploy failed: Check permissions in repo settings
+
+**Permissions:**
+- Go to Settings → Actions → General
+- Check "Read and write permissions"
+- Enable "Allow GitHub Actions to create and approve pull requests" (if needed)
+
+---
+
+#### Styling Issues
+
+**Symptom:** Tailwind classes not working
+
+**Solution:**
+1. Check `tailwind.config.js` content paths:
+   ```javascript
+   content: [
+     "./index.html",
+     "./src/**/*.{js,ts,jsx,tsx}",
+   ],
+   ```
+2. Ensure `src/index.css` imports Tailwind:
    ```css
-   :root {
-     --primaryColor: #newcolor;
-     --secondaryColor: #newcolor;
-   }
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
    ```
-2. Update Tailwind classes in components
-3. Rebuild and redeploy
+3. Clear build cache:
+   ```bash
+   rm -rf dist node_modules/.vite
+   npm run build
+   ```
 
 ---
 
-### Adding New Sections
+#### Animation Issues
 
-1. Create new component in source repo
-2. Import and add to App component
-3. Add navigation link to Header
-4. Update mobile menu
-5. Rebuild and redeploy
+**Symptom:** Framer Motion animations not working
+
+**Solution:**
+1. Check Framer Motion version compatibility
+2. Ensure imports are correct:
+   ```tsx
+   import { motion } from 'framer-motion';
+   ```
+3. Check browser console for errors
+4. Test in different browsers
+
+**Matrix Rain Issues:**
+1. Check canvas element exists
+2. Check browser console for errors
+3. Adjust opacity in `MatrixRain.tsx`
+4. Test on different screen sizes
 
 ---
 
-## Conclusion
+## Migration History
 
-This portfolio website is a well-crafted, performant single-page application built with modern web technologies. It demonstrates:
+### From Build Artifacts to Source Code (November 2025)
 
-- **Technical Skills:** React, Tailwind CSS, Vite, responsive design
-- **Design Skills:** Clean UI, smooth animations, thoughtful UX
-- **Professional Experience:** Full-stack JavaScript development
-- **Deployment:** GitHub Pages with custom domain
+**Previous State:**
+- Repository contained only build artifacts (dist/)
+- Manual build and deployment process
+- No source code version control
+- No CI/CD pipeline
 
-**Strengths:**
-- Fast load times
-- Smooth animations
-- Responsive design
-- Clean code structure
-- SEO optimized
+**Migration Changes:**
+- Added full React TypeScript source code
+- Implemented GitHub Actions workflow
+- Removed build artifacts from repository
+- Added `.gitignore` for node_modules and dist
+- Configured automatic builds and deployments
 
-**Future Enhancements:**
-- Image optimization
-- Blog section
-- Contact form
-- Dark/light mode toggle
-- More projects
+**Benefits:**
+- Full version control of source code
+- Automatic deployments on push
+- Type safety with TypeScript
+- Modern development workflow
+- Better collaboration potential
+- Easier maintenance and updates
+
+**Deployment Changes:**
+- **Old:** Manual build → push dist/ to master
+- **New:** Push source to master → GitHub Actions builds → auto-deploy
+
+---
+
+## Browser Compatibility
+
+**Target Browsers:**
+- Chrome/Edge 90+ (2021+)
+- Firefox 88+ (2021+)
+- Safari 14+ (2020+)
+- Mobile browsers:
+  - iOS Safari 14+
+  - Chrome Android 90+
+
+**Modern Features Used:**
+- ES2020+ JavaScript
+- CSS Grid & Flexbox
+- CSS Custom Properties (variables)
+- Canvas API (Matrix rain)
+- Smooth scrolling
+- ES Modules
+
+**Fallbacks:**
+- Graceful degradation for older browsers
+- Core content accessible without JavaScript (semantic HTML)
+- No IE11 support (not needed for modern portfolio)
+
+---
+
+## Security Considerations
+
+**External Links:**
+- All external links use `target="_blank"`
+- Security: `rel="noopener noreferrer"` prevents tab nabbing
+
+**Dependencies:**
+- Regular updates via npm
+- No known vulnerabilities
+- Minimal dependency footprint
+
+**GitHub Pages Security:**
+- HTTPS by default (free SSL)
+- No backend or database (static files only)
+- No user data collection
+- No cookies or tracking
+
+**GitHub Actions:**
+- Secure workflow with minimal permissions
+- No secrets required
+- Read-only content access
+- Write access only for Pages deployment
+
+---
+
+## Performance Metrics
+
+**Build Output (Estimated):**
+- Total bundle size: ~400KB (uncompressed)
+- After GZIP: ~100KB
+- First load: Fast (static files)
+- Subsequent loads: Cached
+
+**Lighthouse Scores (Target):**
+- Performance: 90+
+- Accessibility: 90+
+- Best Practices: 90+
+- SEO: 90+
+
+**Optimizations Applied:**
+- Code splitting (vendor chunks)
+- Minification (esbuild)
+- CSS extraction
+- No sourcemaps in production
+- Efficient animations
+
+---
+
+## Future Enhancements
+
+**Potential Features:**
+- Blog section (with MDX support)
+- Dark/light mode toggle (currently dark-only)
+- Contact form with backend (Formspree, EmailJS)
+- More interactive animations
+- Project filtering by technology tags
+- Resume download (PDF)
+- Language switching (EN/TH)
+- Testimonials section
+- Certificate/achievements section
+
+**Performance:**
+- Image optimization (WebP with fallbacks)
+- Lazy loading for images below the fold
+- Service worker for offline support
+- Progressive Web App (PWA) features
+- Skeleton loading states
+
+**Analytics:**
+- Google Analytics or privacy-focused alternative
+- Track page views and user engagement
+- Monitor performance metrics
 
 ---
 
 ## Quick Reference
 
 ### Key Files
-- Entry: `/index.html`
-- App Bundle: `/assets/index.1351db88.js`
-- Styles: `/assets/index.540fbe58.css`
-- Images: `/images/`
 
-### Key URLs
-- Website: https://parintorn.com
-- GitHub: https://github.com/parintorn1902
-- LinkedIn: https://www.linkedin.com/in/parintorn-s-24579a179/
+**Configuration:**
+- `vite.config.ts` - Build configuration
+- `tailwind.config.js` - Tailwind CSS settings
+- `tsconfig.json` - TypeScript configuration
+- `.github/workflows/deploy.yml` - Deployment workflow
 
-### Key Technologies
-- React 18
-- Vite
-- Tailwind CSS 3
-- GitHub Pages
+**Source Code:**
+- `src/App.tsx` - Main application
+- `src/main.tsx` - Entry point
+- `src/data/portfolio.ts` - Content data
+- `src/index.css` - Global styles
 
-### Key Colors
-- Purple: #7952B3
-- Gold: #F8BB0F
-- Dark BG: #181818 / #222831
-- Light Text: #E1E8EB
+**Entry:**
+- `index.html` - HTML entry point
+- `public/` - Static assets
 
 ---
 
-**Document Version:** 1.0
-**Created:** November 23, 2025
-**Author:** Claude AI (Code Analysis)
-**Purpose:** Technical documentation for portfolio website codebase
+### Key Commands
+
+```bash
+# Development
+npm install              # Install dependencies
+npm run dev             # Start dev server (http://localhost:5173)
+
+# Production
+npm run build           # Build for production (creates dist/)
+npm run preview         # Preview production build locally
+
+# Quality
+npm run lint            # Run ESLint
+
+# Deployment
+git push origin master  # Push to GitHub → triggers auto-deployment
+```
+
+---
+
+### Key URLs
+
+**Live Sites:**
+- Primary: https://parintorn.com
+- GitHub Pages: https://parintorn1902.github.io
+
+**Repository:**
+- GitHub: https://github.com/parintorn1902/parintorn1902.github.io
+
+**Social:**
+- GitHub Profile: https://github.com/parintorn1902
+- LinkedIn: https://www.linkedin.com/in/parintorn-s-24579a179/
+- Email: parintorn1902@gmail.com
+
+---
+
+### Key Technologies
+
+**Frontend:**
+- React 19 + TypeScript
+- Vite 7
+- Tailwind CSS 3
+- Framer Motion 12
+
+**Deployment:**
+- GitHub Actions (CI/CD)
+- GitHub Pages (Hosting)
+
+**Theme:**
+- Cyberpunk/Hacker aesthetic
+- Matrix rain effect
+- Dark mode with green accents
+
+---
+
+### Key Data Locations
+
+**Content Updates:**
+- Projects: `src/data/portfolio.ts` → `projects` array
+- Experience: `src/data/portfolio.ts` → `experiences` array
+- Skills: `src/data/portfolio.ts` → `skills` object
+- Technologies: `src/data/portfolio.ts` → `technologies` object
+- Personal Info: `src/data/portfolio.ts` → `personalInfo` object
+
+**Images:**
+- Project previews: `public/images/`
+- Favicon: `public/favicon.svg`
+
+---
+
+## Conclusion
+
+This portfolio website showcases modern web development practices using React 19, TypeScript, Vite, and Tailwind CSS. It features a unique cyberpunk aesthetic with Matrix rain effects, smooth animations, and a fully automated CI/CD pipeline via GitHub Actions.
+
+**Key Strengths:**
+- Modern, type-safe codebase
+- Automated build and deployment
+- Responsive, mobile-first design
+- Unique visual design (cyberpunk theme)
+- SEO optimized
+- Fast performance
+- Easy to maintain and update
+- Centralized data management
+
+**Developer Experience:**
+- Fast development server with HMR
+- TypeScript for type safety
+- ESLint for code quality
+- Simple deployment (push to master)
+- Clear project structure
+
+**Maintained By:** Parintorn Sanguanpong
+
+---
+
+**Documentation Version:** 2.0 (Source Code Edition)
+**Last Updated:** November 24, 2025
+**Purpose:** Comprehensive technical documentation for portfolio website source code
+
+---
+
+*For questions, contributions, or feedback, please contact via GitHub or email.*
