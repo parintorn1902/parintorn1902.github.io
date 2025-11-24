@@ -4,6 +4,7 @@
 > **Type:** React TypeScript Source Code with GitHub Actions Deployment
 > **Owner:** Parintorn Sanguanpong
 > **Domain:** https://parintorn.com
+> **Documentation Version:** 2.1
 > **Last Updated:** November 24, 2025
 
 ---
@@ -46,14 +47,19 @@ This repository contains the **source code** of a personal portfolio website. It
 ## Repository Structure
 
 ```
-/home/user/parintorn1902.github.io/
+parintorn1902.github.io/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml                 # GitHub Actions deployment workflow
 ├── public/
 │   ├── images/                        # Static images (project previews, etc.)
+│   │   ├── favicon.png               # Site favicon (PNG version)
+│   │   ├── netflix-preview.png       # Netflix project preview
+│   │   └── student-management-preview.png # CRUD project preview
 │   ├── favicon.svg                    # Site favicon (SVG)
 │   └── vite.svg                       # Vite logo
+├── images/                             # Additional images directory at root
+├── favicon.svg                         # Favicon (also at root level)
 ├── src/
 │   ├── components/                    # React components
 │   │   ├── Contact.tsx               # Contact section component
@@ -73,12 +79,14 @@ This repository contains the **source code** of a personal portfolio website. It
 │   └── vite-env.d.ts                 # Vite type definitions
 ├── index.html                         # HTML entry point
 ├── package.json                       # Dependencies and scripts
+├── package-lock.json                  # Locked dependency versions
 ├── tsconfig.json                      # TypeScript configuration
 ├── tsconfig.app.json                  # TypeScript app configuration
 ├── tsconfig.node.json                 # TypeScript node configuration
 ├── vite.config.ts                     # Vite build configuration
 ├── tailwind.config.js                 # Tailwind CSS configuration
 ├── postcss.config.js                  # PostCSS configuration
+├── eslint.config.js                   # ESLint flat config
 ├── .gitignore                         # Git ignore rules
 ├── CLAUDE.md                          # This documentation
 └── README.md                          # Project introduction
@@ -90,10 +98,10 @@ This repository contains the **source code** of a personal portfolio website. It
 
 ### Frontend Framework
 
-- **React 19** - Latest React with improved concurrent features
-- **TypeScript** - Type-safe JavaScript
-- **Vite 7** - Fast build tool and dev server
-- **Framer Motion** - Animation library (v12.23.24)
+- **React 19.2.0** - Latest React with improved concurrent features
+- **TypeScript 5.9.3** - Type-safe JavaScript
+- **Vite 7.2.4** - Fast build tool and dev server
+- **Framer Motion 12.23.24** - Animation library
 
 ### Styling
 
@@ -108,9 +116,12 @@ This repository contains the **source code** of a personal portfolio website. It
 
 ### Development Tools
 
-- **TypeScript ESLint** - Code linting (v8.46.4)
-- **Vite Plugin React** - Fast Refresh support (v5.1.1)
-- **ESLint** - JavaScript linter (v9.39.1)
+- **TypeScript ESLint 8.46.4** - Code linting
+- **Vite Plugin React 5.1.1** - Fast Refresh support
+- **ESLint 9.39.1** - JavaScript linter
+- **@types/node 24.10.1** - Node.js type definitions
+- **@types/react 19.2.5** - React type definitions
+- **@types/react-dom 19.2.3** - React DOM type definitions
 
 ### Deployment
 
@@ -411,43 +422,76 @@ document.documentElement.style.scrollBehavior = 'smooth';
 **Purpose:** Contact information and social links
 
 **Content:**
-- **Email:** parintorn1902@gmail.com
-- **GitHub:** https://github.com/parintorn1902
-- **LinkedIn:** https://www.linkedin.com/in/parintorn-s-24579a179/
+- **GitHub:** https://github.com/parintorn1902 (@parintorn1902)
+- **LinkedIn:** https://www.linkedin.com/in/parintorn-s-24579a179/ (parintorn-s)
 
 **Features:**
-- Icon links with hover effects
-- Centered layout
-- Responsive design
-- Email link (mailto:)
-- External links open in new tab
+- Interactive cards with mouse tracking light effects
+- Glassmorphism design with backdrop blur
+- Icon links with hover effects and color transitions
+- Responsive grid layout (2 columns on desktop, 1 on mobile)
+- Hover animations (slide right effect)
+- Terminal-style border and styling
+- Footer with copyright and design attribution
+
+**Special Effects:**
+- **ContactCard component**: Custom card with mouse position tracking
+- Radial gradient follows mouse position on hover
+- Background glow effect (rgba(0, 255, 65, 0.15))
+- Smooth transitions and animations
 
 **Data Source:** `src/data/portfolio.ts` - `personalInfo` object
+
+**Note:** Email is stored in `personalInfo.email` but not displayed in the Contact component UI. Contact is limited to GitHub and LinkedIn links.
 
 ---
 
 ### 9. **Custom Hook: useMousePosition** (`src/hooks/useMousePosition.ts`)
 
-**Purpose:** Track mouse position for interactive effects
+**Purpose:** Track mouse position relative to a specific element for interactive effects
+
+**Signature:**
+```typescript
+useMousePosition(ref: RefObject<HTMLElement | null>)
+```
 
 **Returns:**
 ```typescript
 {
-  x: number;  // Mouse X coordinate
-  y: number;  // Mouse Y coordinate
+  mousePosition: {
+    x: number;  // Mouse X coordinate relative to element
+    y: number;  // Mouse Y coordinate relative to element
+  },
+  isHovering: boolean;  // Whether mouse is over the element
 }
 ```
 
-**Usage:**
-- Interactive card effects
-- Cursor tracking
-- Mouse-following animations
-- Parallax effects
+**Features:**
+- Tracks mouse position relative to the referenced element (not global position)
+- Uses element's `getBoundingClientRect()` to calculate relative coordinates
+- Provides hover state tracking (`isHovering`)
+- Handles `mousemove`, `mouseenter`, and `mouseleave` events
+- Automatic cleanup on unmount
 
-**Implementation:**
-- Uses `mousemove` event listener
-- Updates state on mouse movement
-- Cleanup on unmount
+**Usage:**
+```typescript
+const cardRef = useRef<HTMLDivElement>(null);
+const { mousePosition, isHovering } = useMousePosition(cardRef);
+
+// Use in component
+<div ref={cardRef}>
+  {isHovering && (
+    <div style={{
+      background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, ...)`
+    }} />
+  )}
+</div>
+```
+
+**Used In:**
+- ContactCard component (mouse tracking light effect)
+- Interactive card effects
+- Cursor-following animations
 
 ---
 
@@ -602,12 +646,16 @@ export const technologies = {
 
 ### Color Palette (Cyberpunk Theme)
 
-**Primary Colors:**
-```css
---color-bg: #05070f;              /* Dark background */
---color-text: #e0e0e0;            /* Light text */
---color-accent: #00ff41;          /* Matrix green */
---color-accent-secondary: #0080ff; /* Blue accent */
+**Custom Tailwind Colors (defined in `tailwind.config.js`):**
+```javascript
+cyber: {
+  primary: '#00ff41',      // Matrix green - primary accent
+  secondary: '#00d9ff',    // Cyan blue - secondary accent
+  accent: '#ff2a6d',       // Hot pink - tertiary accent
+  dark: '#0a0e27',         // Dark blue background
+  darker: '#05070f',       // Darkest background
+  card: '#0f1629',         // Card background
+}
 ```
 
 **Matrix Effect:**
@@ -615,6 +663,13 @@ export const technologies = {
 --matrix-color: #0F0;             /* Bright green */
 --matrix-opacity: 0.3;            /* Background opacity */
 ```
+
+**Usage in Tailwind:**
+- `bg-cyber-darker` - Darkest background (#05070f)
+- `bg-cyber-dark` - Dark background (#0a0e27)
+- `bg-cyber-card` - Card background (#0f1629)
+- `text-cyber-primary` - Matrix green text (#00ff41)
+- `border-cyber-primary` - Matrix green borders
 
 **Theme Characteristics:**
 - Dark cyberpunk aesthetic
@@ -625,10 +680,23 @@ export const technologies = {
 
 ### Typography
 
+**Font Families (defined in `tailwind.config.js` and imported in `index.css`):**
+```javascript
+fontFamily: {
+  mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
+  sans: ['Inter', 'system-ui', 'sans-serif'],
+}
+```
+
+**Google Fonts Import:**
+```css
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+```
+
 **Font Strategy:**
-- System fonts or Google Fonts
-- Clean, modern sans-serif
-- High readability
+- **Primary**: JetBrains Mono (monospace) - Used for most text, maintaining cyberpunk theme
+- **Secondary**: Inter (sans-serif) - Used for cleaner, more readable sections
+- High readability with multiple font weights (300-800)
 
 **Font Sizes (Tailwind):**
 - `text-6xl` / `text-5xl`: Hero titles (3rem - 4rem / 48px - 64px)
@@ -683,6 +751,56 @@ whileTap={{ scale: 0.95 }}
 - Buttons: Slight scale + glow
 - Icons: Rotate or bounce
 - Sections: Fade in from bottom
+
+#### Tailwind Custom Animations
+
+**Custom Animations (defined in `tailwind.config.js`):**
+```javascript
+animation: {
+  'glow': 'glow 2s ease-in-out infinite alternate',
+  'float': 'float 3s ease-in-out infinite',
+  'scan': 'scan 8s linear infinite',
+  'glitch': 'glitch 1s linear infinite',
+  'typing': 'typing 3.5s steps(40, end)',
+  'blink': 'blink 0.7s infinite',
+  'spin-slow': 'spin 5s linear infinite',
+}
+```
+
+**Keyframes:**
+- **glow**: Text shadow pulsing effect (0-30px glow)
+- **float**: Vertical floating motion (-20px)
+- **scan**: Vertical scanning line effect (top: 0% → 100%)
+- **glitch**: Glitch distortion effect (±2px)
+- **typing**: Typewriter effect (width animation)
+- **blink**: Cursor blinking effect
+- **spin-slow**: Slow rotation (5s per rotation)
+
+**Usage:**
+```tsx
+<div className="animate-glow">Glowing text</div>
+<div className="animate-float">Floating element</div>
+```
+
+#### CSS Custom Classes (defined in `index.css`)
+
+**Utility Classes:**
+```css
+.glow-text      // Text with matrix green glow shadow
+.glow-box       // Box with matrix green glow shadow
+.glass-card     // Glassmorphism card with backdrop blur
+.terminal-border // Terminal-style border with accent color
+```
+
+**Custom Scrollbar:**
+- Width: 10px
+- Track: Dark background (`bg-cyber-darker`)
+- Thumb: Matrix green with opacity (`bg-cyber-primary/30`)
+- Hover: Increased opacity (`bg-cyber-primary/50`)
+
+**Selection Style:**
+- Background: Matrix green (`bg-cyber-primary`)
+- Text: Dark background (`text-cyber-darker`)
 
 #### CSS Animations
 
@@ -1255,44 +1373,124 @@ export const technologies = {
 
 #### Tailwind Configuration (`tailwind.config.js`)
 
-**Customize colors:**
+**Current Configuration:**
 ```javascript
 export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        'matrix-green': '#00ff41',
-        'cyber-blue': '#0080ff',
-        // Add custom colors
+        cyber: {
+          primary: '#00ff41',
+          secondary: '#00d9ff',
+          accent: '#ff2a6d',
+          dark: '#0a0e27',
+          darker: '#05070f',
+          card: '#0f1629',
+        },
+      },
+      fontFamily: {
+        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'glow': 'glow 2s ease-in-out infinite alternate',
+        'float': 'float 3s ease-in-out infinite',
+        'scan': 'scan 8s linear infinite',
+        'glitch': 'glitch 1s linear infinite',
+        'typing': 'typing 3.5s steps(40, end)',
+        'blink': 'blink 0.7s infinite',
+        'spin-slow': 'spin 5s linear infinite',
+      },
+      backdropBlur: {
+        xs: '2px',  // Extra small blur for subtle effects
       },
     },
   },
-};
+  plugins: [],
+}
 ```
 
-**Customize fonts, spacing, breakpoints, etc.**
+**Extended Features:**
+- **Colors**: Complete `cyber` palette with 6 shades
+- **Fonts**: JetBrains Mono (mono) and Inter (sans) families
+- **Animations**: 7 custom animations (glow, float, scan, glitch, typing, blink, spin-slow)
+- **Backdrop Blur**: Extra small blur (`xs: 2px`) for glassmorphism effects
+
+**Customization Tips:**
+- Add custom colors to the `cyber` palette
+- Extend font families for different aesthetics
+- Create custom animations and keyframes
+- Adjust breakpoints, spacing, and other theme values
 
 #### Global Styles (`src/index.css`)
 
-**Add custom animations:**
+**Current Global Styles:**
 ```css
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px #00ff41;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-darker text-cyber-primary font-mono;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
   }
-  50% {
-    box-shadow: 0 0 20px #00ff41;
+
+  ::selection {
+    @apply bg-cyber-primary text-cyber-darker;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-primary/30 hover:bg-cyber-primary/50;
+    border-radius: 5px;
   }
 }
 
-.glow-on-hover:hover {
-  animation: glow 2s infinite;
+@layer components {
+  .glow-text {
+    text-shadow: 0 0 10px theme('colors.cyber.primary'),
+                 0 0 20px theme('colors.cyber.primary'),
+                 0 0 30px theme('colors.cyber.primary');
+  }
+
+  .glow-box {
+    box-shadow: 0 0 10px theme('colors.cyber.primary'),
+                0 0 20px theme('colors.cyber.primary');
+  }
+
+  .glass-card {
+    @apply bg-cyber-card/30 backdrop-blur-md border border-cyber-primary/20 rounded-lg;
+  }
+
+  .terminal-border {
+    @apply border border-cyber-primary/50 relative;
+  }
 }
 ```
 
-**Import fonts:**
+**Add more custom classes:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@layer components {
+  .custom-gradient {
+    background: linear-gradient(135deg, theme('colors.cyber.primary'), theme('colors.cyber.secondary'));
+  }
+}
 ```
 
 #### Component Styles
@@ -1612,20 +1810,28 @@ git push origin master
 ### Key Files
 
 **Configuration:**
-- `vite.config.ts` - Build configuration
-- `tailwind.config.js` - Tailwind CSS settings
-- `tsconfig.json` - TypeScript configuration
-- `.github/workflows/deploy.yml` - Deployment workflow
+- `vite.config.ts` - Vite build configuration
+- `tailwind.config.js` - Tailwind CSS custom theme and animations
+- `postcss.config.js` - PostCSS plugins configuration
+- `eslint.config.js` - ESLint flat config (ES9 format)
+- `tsconfig.json` - TypeScript root configuration (references)
+- `tsconfig.app.json` - TypeScript app configuration (src/)
+- `tsconfig.node.json` - TypeScript node configuration (Vite config)
+- `.github/workflows/deploy.yml` - GitHub Actions deployment workflow
+- `package.json` - Dependencies, scripts, and project metadata
 
 **Source Code:**
-- `src/App.tsx` - Main application
-- `src/main.tsx` - Entry point
-- `src/data/portfolio.ts` - Content data
-- `src/index.css` - Global styles
+- `src/App.tsx` - Main application component
+- `src/main.tsx` - Application entry point
+- `src/data/portfolio.ts` - Centralized content data
+- `src/index.css` - Global styles, custom CSS classes, font imports
+- `src/components/*.tsx` - All React components
+- `src/hooks/useMousePosition.ts` - Custom mouse tracking hook
 
 **Entry:**
-- `index.html` - HTML entry point
-- `public/` - Static assets
+- `index.html` - HTML entry point with meta tags
+- `public/` - Static assets (images, favicon, vite.svg)
+- `favicon.svg` - Favicon at root level
 
 ---
 
@@ -1668,19 +1874,28 @@ git push origin master  # Push to GitHub → triggers auto-deployment
 ### Key Technologies
 
 **Frontend:**
-- React 19 + TypeScript
-- Vite 7
-- Tailwind CSS 3
-- Framer Motion 12
+- React 19.2.0 + TypeScript 5.9.3
+- Vite 7.2.4
+- Tailwind CSS 3.4.18
+- Framer Motion 12.23.24
+- React Icons 5.5.0
+
+**Development:**
+- ESLint 9.39.1 + TypeScript ESLint 8.46.4
+- PostCSS 8.5.6 + Autoprefixer 10.4.22
+- Vite Plugin React 5.1.1
 
 **Deployment:**
 - GitHub Actions (CI/CD)
 - GitHub Pages (Hosting)
+- Node.js 20 (build environment)
 
 **Theme:**
 - Cyberpunk/Hacker aesthetic
-- Matrix rain effect
-- Dark mode with green accents
+- Matrix rain effect with Canvas API
+- Dark mode with custom cyber color palette
+- JetBrains Mono + Inter fonts
+- Custom animations and glassmorphism effects
 
 ---
 
@@ -1724,9 +1939,20 @@ This portfolio website showcases modern web development practices using React 19
 
 ---
 
-**Documentation Version:** 2.0 (Source Code Edition)
-**Last Updated:** November 24, 2025
+**Documentation Version:** 2.1 (Updated Source Code Edition)
+**Last Updated:** November 24, 2025 (Revised)
 **Purpose:** Comprehensive technical documentation for portfolio website source code
+
+**Recent Updates:**
+- Updated all version numbers to match package.json (React 19.2.0, Vite 7.2.4, TypeScript 5.9.3)
+- Added complete Tailwind custom color palette (cyber theme)
+- Documented all custom animations and keyframes
+- Added custom CSS classes documentation (glow-text, glow-box, glass-card, terminal-border)
+- Updated Contact component documentation (removed email display, added mouse tracking effects)
+- Enhanced useMousePosition hook documentation with full API details
+- Added eslint.config.js to file structure
+- Updated typography section with JetBrains Mono and Inter fonts
+- Added custom scrollbar and selection styles documentation
 
 ---
 
