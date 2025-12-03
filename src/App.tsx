@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import MatrixRain from './components/MatrixRain';
+import Scene from './components/3d/Scene';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -12,9 +12,6 @@ function App() {
     // Smooth scrolling
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Disable right-click context menu for aesthetic (optional)
-    // document.addEventListener('contextmenu', e => e.preventDefault());
-
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
@@ -22,29 +19,34 @@ function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      {/* Matrix Rain Background */}
-      <MatrixRain />
+      {/* Fixed 3D Background */}
+      <div className="fixed inset-0 z-0">
+        <Scene />
+      </div>
 
-      {/* Navigation */}
-      <Navigation />
+      {/* Scrollable Content */}
+      <div className="relative z-10">
+        {/* Navigation */}
+        <Navigation />
 
-      {/* Main Content */}
-      <main className="relative z-10">
-        {/* Hero Section */}
-        <Hero />
+        {/* Main Content */}
+        <main>
+          {/* Hero Section */}
+          <Hero />
 
-        {/* Projects Section */}
-        <Projects />
+          {/* Projects Section */}
+          <Projects />
 
-        {/* Technologies Section */}
-        <Technologies />
+          {/* Technologies Section */}
+          <Technologies />
 
-        {/* Experience Section */}
-        <Experience />
+          {/* Experience Section */}
+          <Experience />
 
-        {/* Contact Section */}
-        <Contact />
-      </main>
+          {/* Contact Section */}
+          <Contact />
+        </main>
+      </div>
     </div>
   );
 }
