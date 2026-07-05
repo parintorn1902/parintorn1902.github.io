@@ -167,7 +167,7 @@ const Projects = () => {
           transition={{ delay: 0.5 }}
         >
           <a
-            href="https://github.com/parintorn1902"
+            href="https://github.com/pixelboatt"
             target="_blank"
             rel="noopener noreferrer"
             className="cyber-button-outline inline-block"

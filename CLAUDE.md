@@ -1,6 +1,6 @@
 # Portfolio Website - Technical Documentation
 
-> **Repository:** parintorn1902.github.io | **Owner:** Parintorn Sanguanpong | **Domain:** https://parintorn.com
+> **Repository:** pixelboatt.github.io | **Owner:** Parintorn Sanguanpong | **Domain:** https://parintorn.com
 
 ---
 
@@ -55,7 +55,7 @@ export const personalInfo = {
   name: "Parintorn Sanguanpong",
   title: "Senior Software Engineer",
   description: "...",
-  github: "https://github.com/parintorn1902",
+  github: "https://github.com/pixelboatt",
   linkedin: "https://www.linkedin.com/in/parintorn-s-24579a179/",
   email: "parintorn1902@gmail.com",
 };
@@ -124,8 +124,8 @@ Usage: `bg-cyber-darker`, `text-cyber-primary`, `border-cyber-primary`
 
 ### Setup
 ```bash
-git clone https://github.com/parintorn1902/parintorn1902.github.io.git
-cd parintorn1902.github.io
+git clone https://github.com/pixelboatt/pixelboatt.github.io.git
+cd pixelboatt.github.io
 npm install
 npm run dev  # http://localhost:5173
 ```
@@ -193,7 +193,7 @@ Add to `src/index.css`:
 
 **URLs:**
 - https://parintorn.com
-- https://parintorn1902.github.io
+- https://pixelboatt.github.io
 
 ---
 

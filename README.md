@@ -3,7 +3,7 @@
 > Senior Software Engineer | Full-Stack Developer | TypeScript & Golang Enthusiast
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-parintorn.com-blue?style=flat-square)](https://parintorn.com)
-[![GitHub](https://img.shields.io/badge/GitHub-parintorn1902-black?style=flat-square&logo=github)](https://github.com/parintorn1902)
+[![GitHub](https://img.shields.io/badge/GitHub-pixelboatt-black?style=flat-square&logo=github)](https://github.com/pixelboatt)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Parintorn%20S-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/parintorn-s-24579a179/)
 
 ## 👋 About Me
@@ -46,9 +46,9 @@ Currently working at **TechBerry Company Limited** since 2018, where I design an
 ### [Netflix Clone](https://parintorn.com/netflix)
 Next.js and Tailwind CSS making the ultimate Netflix clone website
 - **Tech**: Next.js, Tailwind CSS, React
-- [View Source](https://github.com/parintorn1902/my-netflix)
+- [View Source](https://github.com/pixelboatt/my-netflix)
 
-### [Basic CRUD & JWT](https://github.com/parintorn1902/basic-react-node-crud)
+### [Basic CRUD & JWT](https://github.com/pixelboatt/basic-react-node-crud)
 Next.js with Chakra-UI and RESTful Node.js service with authentication
 - **Tech**: Next.js, Chakra-UI, Node.js, JWT
 
@@ -86,7 +86,7 @@ This site is automatically deployed to GitHub Pages via GitHub Actions on every 
 ## 📫 Get in Touch
 
 - **Website**: [parintorn.com](https://parintorn.com)
-- **GitHub**: [@parintorn1902](https://github.com/parintorn1902)
+- **GitHub**: [@pixelboatt](https://github.com/pixelboatt)
 - **LinkedIn**: [Parintorn S](https://www.linkedin.com/in/parintorn-s-24579a179/)
 
 ---

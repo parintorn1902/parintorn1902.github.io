@@ -90,7 +90,7 @@ const Contact = () => {
                   <FaGithub className="text-3xl text-cyber-primary group-hover:text-cyber-secondary transition-colors duration-300" />
                   <div>
                     <div className="text-cyber-secondary text-sm">GitHub</div>
-                    <div className="text-cyber-primary text-sm">@parintorn1902</div>
+                    <div className="text-cyber-primary text-sm">@pixelboatt</div>
                   </div>
                 </motion.a>
               </ContactCard>

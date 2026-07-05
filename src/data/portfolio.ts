@@ -6,7 +6,7 @@ export const personalInfo = {
   description: "Hello, I'm a Senior Software Engineer specializing in full-stack development. With TypeScript as my core language, I work extensively with Node.js, React.js, and React Native, along with Golang. I love coding, exploring new technologies, and collaborating with others.",
   tagline: "Building modern web experiences with code",
   location: "Thailand",
-  github: "https://github.com/parintorn1902",
+  github: "https://github.com/pixelboatt",
   linkedin: "https://www.linkedin.com/in/parintorn-s-24579a179/",
   email: "parintorn1902@gmail.com",
 };
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     projectDesc: "Next.js and Tailwind.css making the ultimate Netflix clone website",
     projectPreviewImage: "netflix-preview.png",
     projectDemoLink: "https://parintorn.com/netflix",
-    projectSourceLink: "https://github.com/parintorn1902/my-netflix",
+    projectSourceLink: "https://github.com/pixelboatt/my-netflix",
     tags: ["Next.js", "Tailwind CSS", "React"],
   },
   {
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     projectName: "Basic CRUD & JWT",
     projectDesc: "Next.js with Chakra-UI and RESTful Node.js service with authentication",
     projectPreviewImage: "student-management-preview.png",
-    projectSourceLink: "https://github.com/parintorn1902/basic-react-node-crud",
+    projectSourceLink: "https://github.com/pixelboatt/basic-react-node-crud",
     tags: ["Next.js", "Chakra-UI", "Node.js", "JWT"],
   },
 ];
