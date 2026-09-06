@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Parintorn · Playable world previews</title><link rel="stylesheet" href="game.css"></head>
+<body><div id="app"><canvas id="world" aria-label="Interactive portfolio world"></canvas><div class="shade"></div>
+<header><a class="brand" href="#about">parintorn<span> / play</span></a><nav aria-label="Portfolio"><button data-stop="1">Projects</button><button data-stop="3">Tech stack</button><button data-stop="4">Experience</button><button data-stop="5">Contact</button></nav><button id="motion" aria-pressed="false">Pause motion</button></header>
+<div class="edition" id="edition"></div><main id="story" tabindex="-1"><p id="kicker">Parintorn Sanguanpong · Senior Software Engineer</p><h1 id="headline">Serious code.<br><em>Silly little world.</em></h1><p id="description">Web, mobile, backend. A small world of things I build.</p><div class="actions"><button id="play" class="primary">Play as Boop ↗</button><button id="inspect" class="secondary">Meet the engineer →</button></div></main>
+<div class="guide"><span class="guide-face" aria-hidden="true">:)</span><p id="banter" role="status">Boop here. Mind the edge. I just mopped the void.</p></div>
+<div id="explore-hud" hidden><strong>YOU ARE BOOP</strong><p>WASD / arrows · Space to jump · E to inspect</p><button id="return">Back to story ↗</button><button id="nearby">Inspect this station</button></div>
+<div class="touch-pad" aria-label="Movement controls" hidden><button data-key="KeyW" aria-label="Move forward">↑</button><div><button data-key="KeyA" aria-label="Move left">←</button><button data-key="KeyS" aria-label="Move backward">↓</button><button data-key="KeyD" aria-label="Move right">→</button></div><button id="jump">Jump!</button></div>
+<div class="journey"><label for="journey">SCROLL TO EXPLORE <span id="location">01 / Welcome</span></label><input id="journey" aria-label="Story position" type="range" min="0" max="5" step="0.001" value="0"><nav id="stops" aria-label="World stations"></nav></div>
+<div class="prototype-switcher" aria-label="Theme preview switcher"><button id="previous-theme" aria-label="Previous theme">←</button><span id="theme-name">A · Tiny Planet</span><button id="next-theme" aria-label="Next theme">→</button><a href="comparison.html">Compare looks</a></div>
+<div id="loading" role="status">Boop is unpacking the world…</div>
+<dialog id="details" aria-labelledby="detail-title"><button id="close-details">Close ×</button><p id="detail-kicker"></p><h2 id="detail-title"></h2><div id="detail-content"></div></dialog>
+<noscript><p>Please enable JavaScript to explore. Contact: <a href="mailto:parintorn1902@gmail.com">parintorn1902@gmail.com</a>.</p></noscript>
+</div><script src="game.bundle.js"></script></body></html>
